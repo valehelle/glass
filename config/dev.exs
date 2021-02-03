@@ -74,3 +74,8 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+
+config :glass, Glass.Accounts.Guardian,
+       issuer: "glass",
+       secret_key: "thisisthesecretkey"
