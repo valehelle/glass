@@ -1,1 +1,10 @@
-SUCCESS
+<div class="container">
+  <div class="row py-5">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto mt-5">
+        <h2 class="mt-3 " style="color: #282C34; font-family: 'Source Code Pro', sans-serif;">Thank You</h2>
+        <h5 class="mt-3 " style="color: #282C34; font-family: 'Source Code Pro', sans-serif;">Your username has been reserved and we will email you when we launch!</h5>
+      </div>
+    </div>
+  </div>
+</div>

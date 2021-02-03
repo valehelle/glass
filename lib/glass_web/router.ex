@@ -21,6 +21,7 @@ defmodule GlassWeb.Router do
 
     get "/", PageController, :index
     get "/register", PageController, :new
+    get "/success", PageController, :success
     post "/register", PageController, :create
   end
 

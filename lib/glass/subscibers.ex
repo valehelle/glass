@@ -65,7 +65,7 @@ defmodule Glass.Subscibers do
       end
       
     else
-      {:error, s}
+      {:error, changeset}
     end
      
   end

@@ -20,4 +20,8 @@ defmodule GlassWeb.PageController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+
+  def success(conn, _params) do
+    render(conn, "success.html")
+  end
 end
