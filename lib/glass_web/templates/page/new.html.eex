@@ -17,7 +17,7 @@
             Reserve your username. https://logname.dev/ 
             </label>
             </br>
-              <%= text_input f, :uniquename, class: "form-control", placeholder: "my"   %>
+              <%= text_input f, :uniquename, class: "form-control", placeholder: "my-username"   %>
             </br>
             <%= error_tag f, :uniquename %>
             
