@@ -14,7 +14,7 @@ defmodule GlassWeb.PageController do
   def create(conn, %{"account" => account_params}) do
     case Subscibers.create_account(account_params) do
       {:ok, account} ->
-        render(conn, "success.html")
+        redirect(conn, to: Routes.page_path(conn, :success))
       {:error, %Ecto.Changeset{} = changeset} ->
         changeset = %{changeset | action: :insert}
         render(conn, "new.html", changeset: changeset)
