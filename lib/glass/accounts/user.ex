@@ -1,6 +1,8 @@
 defmodule Glass.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Glass.Profile
+  alias Glass.Profile.Basic
 
   @derive {Inspect, except: [:password]}
   schema "users" do
@@ -8,7 +10,12 @@ defmodule Glass.Accounts.User do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
-
+    has_one :basic, Profile.Basic
+    has_many :education, Profile.Education
+    has_many :works, Profile.Work
+    has_many :projects, Profile.Project
+    has_many :languages, Profile.Language
+    has_many :skills, Profile.Skill
     timestamps()
   end
 
@@ -30,8 +37,11 @@ defmodule Glass.Accounts.User do
       Defaults to `true`.
   """
   def registration_changeset(user, attrs, opts \\ []) do
+
+    attrs = Map.merge(attrs, %{"basic" => %{}})
     user
     |> cast(attrs, [:email])
+    |> cast_assoc(:basic, required: true, with: &Basic.changeset/2)
     |> validate_email()
   end
 

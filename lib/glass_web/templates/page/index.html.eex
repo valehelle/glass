@@ -13,7 +13,7 @@
     </div>
   </div>
 </div>
-
+ <%= link("delete", to: "/users/log_out", method: :delete) %>
 
 <div style="background-color: #282C34;">
   <div class="container">
