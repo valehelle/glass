@@ -1,2 +1,6 @@
 DASHBOARD
+<%= @user.basic.name %>
 
+<%= for education  <- @user.educations do %>
+    <%= education.institution %>
+<% end %>

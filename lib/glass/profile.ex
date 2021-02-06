@@ -241,9 +241,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_education(attrs \\ %{}) do
+  def create_education(attrs \\ %{}, user) do
     %Education{}
-    |> Education.changeset(attrs)
+    |> Education.changeset(attrs, user)
     |> Repo.insert()
   end
 

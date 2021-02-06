@@ -1,0 +1,16 @@
+<%= form_for @changeset, Routes.basic_path(@conn, :update), fn f -> %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name%>
+  <%= error_tag f, :name %>
+  
+  <%= label f, :phone %>
+  <%= text_input f, :phone%>
+  <%= error_tag f, :phone %>
+    
+  <%= label f, :summary %>
+  <%= text_input f, :summary%>
+
+ <%= submit "Update" %>
+
+<% end %>

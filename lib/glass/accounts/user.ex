@@ -11,7 +11,7 @@ defmodule Glass.Accounts.User do
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
     has_one :basic, Profile.Basic
-    has_many :education, Profile.Education
+    has_many :educations, Profile.Education
     has_many :works, Profile.Work
     has_many :projects, Profile.Project
     has_many :languages, Profile.Language

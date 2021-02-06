@@ -7,8 +7,8 @@ defmodule Glass.Repo.Migrations.CreateEducations do
       add :url, :string
       add :area, :string
       add :study_type, :string
-      add :start_date, :utc_datetime
-      add :end_date, :utc_datetime
+      add :start_date, :date
+      add :end_date, :date
       add :score, :string
       add :courses, :string
       add :user_id, references(:users, on_delete: :nothing)
