@@ -44,10 +44,12 @@ defmodule Glass.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.2.2"},
       {:plug_cowboy, "~> 2.0"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.0"},
+      {:httpoison, "~> 1.8"},
+      {:neuron, "~> 5.0.0"}
     ]
   end
 
@@ -66,3 +68,5 @@ defmodule Glass.MixProject do
     ]
   end
 end
+
+

@@ -7,6 +7,14 @@ defmodule Glass.Accounts do
   alias Glass.Repo
   alias Glass.Accounts.{User, UserToken, UserNotifier}
 
+
+
+  def update_token(user, attrs)do
+    user
+    |> User.token_changeset(attrs)
+    |> Repo.update()
+  end
+
   ## Database getters
 
   @doc """
@@ -251,7 +259,7 @@ defmodule Glass.Accounts do
   """
   def get_user_by_session_token(token) do
     {:ok, query} = UserToken.verify_session_token_query(token)
-    Repo.one(query) |> Repo.preload([:basic, :educations, :languages, :projects, :works])
+    Repo.one(query) |> Repo.preload([:basic, :educations, :languages, :projects, :works, :skills])
   end
 
   @doc """

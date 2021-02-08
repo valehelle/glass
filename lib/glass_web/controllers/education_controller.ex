@@ -5,6 +5,13 @@ defmodule GlassWeb.EducationController do
   alias Glass.Profile
   alias Glass.Profile.Education
 
+
+  def show(conn, %{"education_id" => id}) do
+    education = Profile.get_education!(id)
+    render(conn, "show.html", education: education)
+  end
+
+
   def new(conn, _) do
     user = conn.assigns.current_user
     changeset = Education.changeset(%Education{}, %{}, user)
@@ -19,9 +26,27 @@ defmodule GlassWeb.EducationController do
       {:error, changeset} -> 
         render(conn, "new.html", changeset: changeset)
     end
-    
-
   end
+
+  def edit(conn, %{"education_id" => id}) do
+    user = conn.assigns.current_user
+    education = Profile.get_education!(id)
+    changeset = Education.changeset(education, %{}, user)
+    render(conn, "edit.html", changeset: changeset, education: education)
+  end
+
+
+  def update(conn, %{"education_id" => id, "education" => education_param}) do
+    user = conn.assigns.current_user
+    education = Profile.get_education!(id)
+    case Profile.update_education(education, education_param, user) do
+    {:ok, education} ->         
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    {:error, changeset} -> 
+      render(conn, "edit.html", changeset: changeset, education: education)
+    end
+  end
+
 
 
   

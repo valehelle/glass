@@ -1,6 +1,8 @@
 DASHBOARD
 <%= @user.basic.name %>
-
+<%= @user.repository_token %>
+<%= @user.dev_to_token %>
 <%= for education  <- @user.educations do %>
     <%= education.institution %>
+    <%= education.id %>
 <% end %>

@@ -64,12 +64,15 @@ defmodule GlassWeb.Router do
 
   scope "/", GlassWeb do
     pipe_through [:browser, :require_authenticated_user]
-
+     get "github/callback", DashboardController, :callback 
      get "/dashboard", DashboardController, :index
      get "/basic", BasicController, :edit
      put "/basic", BasicController, :update
-     get "/education", EducationController, :new
-     post "/education", EducationController, :create
+     get "/education/new", EducationController, :new
+     post "/education/new", EducationController, :create
+     get "/education/:education_id", EducationController, :show
+     get "/education/:education_id/edit", EducationController, :edit
+     put "/education/:education_id/edit", EducationController, :update
 
 
 #    get "/users/settings", UserSettingsController, :edit

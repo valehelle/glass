@@ -7,6 +7,8 @@ defmodule Glass.Repo.Migrations.CreateUsersAuthTables do
     create table(:users) do
       add :email, :citext, null: false
       add :hashed_password, :string
+      add :repository_token, :string
+      add :dev_to_token, :string
       add :confirmed_at, :naive_datetime
       timestamps()
     end

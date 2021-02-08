@@ -1,15 +1,18 @@
-<%= form_for @changeset, Routes.basic_path(@conn, :update), fn f -> %>
+<%= form_for @changeset, Routes.education_path(@conn, :update, @education.id), fn f -> %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name%>
-  <%= error_tag f, :name %>
+  <%= label f, :institution %>
+  <%= text_input f, :institution%>
+  <%= error_tag f, :institution %>
   
-  <%= label f, :phone %>
-  <%= text_input f, :phone%>
-  <%= error_tag f, :phone %>
-    
-  <%= label f, :summary %>
-  <%= text_input f, :summary%>
+  <%= label f, :start_date %>
+  <%= text_input f, :start_date, class: "form-control", type: "date" %>
+  <%= error_tag f, :start_date %>
+
+
+
+  <%= label f, :end_date %>
+  <%= text_input f, :end_date , class: "form-control", type: "date" %>
+  <%= error_tag f, :end_date %>
 
  <%= submit "Update" %>
 

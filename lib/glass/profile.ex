@@ -227,7 +227,7 @@ defmodule Glass.Profile do
       ** (Ecto.NoResultsError)
 
   """
-  def get_education!(id), do: Repo.get!(Education, id)
+  def get_education!(id), do: Repo.get!(Education, id) |> Repo.preload(:user)
 
   @doc """
   Creates a education.
@@ -259,9 +259,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_education(%Education{} = education, attrs) do
+  def update_education(%Education{} = education, attrs, user) do
     education
-    |> Education.changeset(attrs)
+    |> Education.changeset(attrs, user)
     |> Repo.update()
   end
 

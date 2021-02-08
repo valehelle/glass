@@ -9,6 +9,8 @@ defmodule Glass.Accounts.User do
     field :email, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
+    field :repository_token, :string
+    field :dev_to_token, :string
     field :confirmed_at, :naive_datetime
     has_one :basic, Profile.Basic
     has_many :educations, Profile.Education
@@ -18,6 +20,13 @@ defmodule Glass.Accounts.User do
     has_many :skills, Profile.Skill
     timestamps()
   end
+
+
+  def token_changeset(user, attrs, opts \\ []) do
+    user
+    |> cast(attrs, [:repository_token, :dev_to_token])
+  end
+
 
   @doc """
   A user changeset for registration.
