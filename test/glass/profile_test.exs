@@ -550,4 +550,69 @@ defmodule Glass.ProfileTest do
       assert %Ecto.Changeset{} = Profile.change_keyword(keyword)
     end
   end
+
+  describe "blogs" do
+    alias Glass.Profile.Blog
+
+    @valid_attrs %{description: "some description", public_reactions_count: 42, title: "some title", url: "some url"}
+    @update_attrs %{description: "some updated description", public_reactions_count: 43, title: "some updated title", url: "some updated url"}
+    @invalid_attrs %{description: nil, public_reactions_count: nil, title: nil, url: nil}
+
+    def blog_fixture(attrs \\ %{}) do
+      {:ok, blog} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Profile.create_blog()
+
+      blog
+    end
+
+    test "list_blogs/0 returns all blogs" do
+      blog = blog_fixture()
+      assert Profile.list_blogs() == [blog]
+    end
+
+    test "get_blog!/1 returns the blog with given id" do
+      blog = blog_fixture()
+      assert Profile.get_blog!(blog.id) == blog
+    end
+
+    test "create_blog/1 with valid data creates a blog" do
+      assert {:ok, %Blog{} = blog} = Profile.create_blog(@valid_attrs)
+      assert blog.description == "some description"
+      assert blog.public_reactions_count == 42
+      assert blog.title == "some title"
+      assert blog.url == "some url"
+    end
+
+    test "create_blog/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Profile.create_blog(@invalid_attrs)
+    end
+
+    test "update_blog/2 with valid data updates the blog" do
+      blog = blog_fixture()
+      assert {:ok, %Blog{} = blog} = Profile.update_blog(blog, @update_attrs)
+      assert blog.description == "some updated description"
+      assert blog.public_reactions_count == 43
+      assert blog.title == "some updated title"
+      assert blog.url == "some updated url"
+    end
+
+    test "update_blog/2 with invalid data returns error changeset" do
+      blog = blog_fixture()
+      assert {:error, %Ecto.Changeset{}} = Profile.update_blog(blog, @invalid_attrs)
+      assert blog == Profile.get_blog!(blog.id)
+    end
+
+    test "delete_blog/1 deletes the blog" do
+      blog = blog_fixture()
+      assert {:ok, %Blog{}} = Profile.delete_blog(blog)
+      assert_raise Ecto.NoResultsError, fn -> Profile.get_blog!(blog.id) end
+    end
+
+    test "change_blog/1 returns a blog changeset" do
+      blog = blog_fixture()
+      assert %Ecto.Changeset{} = Profile.change_blog(blog)
+    end
+  end
 end

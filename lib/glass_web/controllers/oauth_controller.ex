@@ -57,7 +57,27 @@ defmodule GlassWeb.OauthController do
   def update(conn, %{"user" => oauth_param}) do
     user = conn.assigns.current_user
     Accounts.update_token(user, oauth_param) 
+    %{"dev_to_token" => dev_token} = oauth_param
+
+    {:ok, blogs} = get_dev_blogs(dev_token)
+    Profile.add_blogs(user,  blogs)
     redirect(conn, to: Routes.dashboard_path(conn, :index))
+  end
+
+  def get_dev_blogs(access_token) do
+    
+    url = "https://dev.to/api/articles/me?per_page=5"
+    headers = [{"Content-Type", "application/json"}, {"Accept","application/json"}, {"api-key", access_token}]
+    case HTTPoison.get url, headers do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} -> 
+        body = Jason.decode!(body)
+        {:ok, body}
+
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        IO.inspect "Not found :("
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        IO.inspect reason
+    end 
   end
 
   def callback(conn, %{"code" => code}) do
@@ -73,7 +93,7 @@ defmodule GlassWeb.OauthController do
           %{"access_token" => access_token} ->
             Accounts.update_token(user, %{"repository_token" => access_token})
             {:ok, body} =  get_github_profile(access_token)
-            save_profile(user, body)
+            save_projects(user, body)
             redirect(conn, to: Routes.dashboard_path(conn, :index))
           %{"error" => error, "error_description" => error_description} ->
              IO.inspect "Error"
@@ -87,7 +107,7 @@ defmodule GlassWeb.OauthController do
     
   end
 
-  def save_profile(user, %{"data" => %{"viewer" => %{"avatarUrl" => avatarUrl, "pinnedItems" => %{"nodes" => pinned_items}}}}) do
+  def save_projects(user, %{"data" => %{"viewer" => %{"avatarUrl" => avatarUrl, "pinnedItems" => %{"nodes" => pinned_items}}}}) do
     basic_param = %{"image" => avatarUrl}
     Profile.update_basic(user.basic, basic_param)
     Profile.add_projects(user, pinned_items)

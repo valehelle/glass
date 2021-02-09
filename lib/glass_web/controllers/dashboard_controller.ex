@@ -5,7 +5,6 @@ defmodule GlassWeb.DashboardController do
   
   def index(conn, _params) do
     user = conn.assigns.current_user
-    IO.inspect user
     render(conn, "index.html", user: conn.assigns.current_user)
   end
   

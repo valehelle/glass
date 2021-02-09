@@ -18,6 +18,7 @@ defmodule Glass.Accounts.User do
     has_many :projects, Profile.Project
     has_many :languages, Profile.Language
     has_many :skills, Profile.Skill
+    has_many :blogs, Profile.Blog
     timestamps()
   end
 

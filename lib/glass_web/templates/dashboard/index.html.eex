@@ -12,3 +12,8 @@ DASHBOARD
     <%= project.name %>
     </br>
 <% end %>
+
+<%= for blog  <- @user.blogs do %>
+    <%= blog.title %>
+    </br>
+<% end %>
