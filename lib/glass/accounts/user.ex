@@ -27,6 +27,8 @@ defmodule Glass.Accounts.User do
     |> cast(attrs, [:repository_token, :dev_to_token])
   end
 
+  
+
 
   @doc """
   A user changeset for registration.

@@ -535,6 +535,30 @@ defmodule Glass.Profile do
     |> Repo.insert()
   end
 
+  def add_projects(user, attrs \\ %{}) do
+    attrs = Enum.map(attrs, fn project -> 
+    %{"description" => description,  "name" => name, "url" => url} = project
+    %{"repositoryTopics" => %{"nodes" => nodes}} = project
+    topics = Enum.map(nodes, fn node -> 
+      %{"topic" => %{"name" => name}} = node
+      %{"description" => name}
+    end)
+    
+    %{"description" => description, "name" => name, "url" => url, "keywords" => topics, "user_id" => user.id}
+    
+    end)
+
+    from(p in Project, where: p.user_id == ^user.id) |> Repo.delete_all
+
+
+    Repo.transaction(fn ->
+      Enum.each(attrs, fn project_attr -> 
+        create_project(project_attr)
+      end)
+      
+    end)
+  end
+
   @doc """
   Updates a project.
 

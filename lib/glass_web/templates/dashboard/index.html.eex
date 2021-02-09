@@ -1,8 +1,14 @@
 DASHBOARD
 <%= @user.basic.name %>
+<%= @user.basic.image %>
 <%= @user.repository_token %>
 <%= @user.dev_to_token %>
 <%= for education  <- @user.educations do %>
     <%= education.institution %>
     <%= education.id %>
+<% end %>
+</br>
+<%= for project  <- @user.projects do %>
+    <%= project.name %>
+    </br>
 <% end %>

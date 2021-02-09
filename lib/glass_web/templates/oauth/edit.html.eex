@@ -1,0 +1,15 @@
+<%= form_for @changeset, Routes.oauth_path(@conn, :update), fn f -> %>
+
+  <%= label f, :repository_token %>
+  <%= text_input f, :repository_token%>
+  <%= error_tag f, :repository_token %>
+  <%= link("Connect", to: "https://github.com/login/oauth/authorize?client_id=f229649ab635a5539fc9", class: "btn btn-primary my-2", style: "width: 100%") %>
+  </br>
+  
+  <%= label f, :dev_to_token %>
+  <%= text_input f, :dev_to_token%>
+  <%= error_tag f, :dev_to_token %>
+    
+ <%= submit "Update" %>
+
+<% end %>

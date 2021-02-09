@@ -23,7 +23,7 @@ defmodule Glass.Profile.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [:name, :description, :highlights, :start_date, :end_date, :url, :roles, :entity, :type])
-    |> validate_required([:name, :description, :highlights, :start_date, :end_date, :url, :roles, :entity, :type])
+    |> cast(attrs, [:name, :description, :highlights, :start_date, :end_date, :url, :roles, :entity, :type, :user_id])
+    |> cast_assoc(:keywords, with: &Keyword.changeset/2)
   end
 end

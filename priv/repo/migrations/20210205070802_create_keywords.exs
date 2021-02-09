@@ -4,7 +4,7 @@ defmodule Glass.Repo.Migrations.CreateKeywords do
   def change do
     create table(:keywords) do
       add :description, :text
-      add :project_id, references(:projects, on_delete: :nothing)
+      add :project_id, references(:projects, on_delete: :delete_all)
 
       timestamps()
     end
