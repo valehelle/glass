@@ -7,6 +7,7 @@ defmodule Glass.Accounts.User do
   @derive {Inspect, except: [:password]}
   schema "users" do
     field :email, :string
+    field :username, :string
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :repository_token, :string
@@ -52,14 +53,15 @@ defmodule Glass.Accounts.User do
 
     attrs = Map.merge(attrs, %{"basic" => %{}})
     user
-    |> cast(attrs, [:email])
+    |> cast(attrs, [:email, :username])
+    |> validate_format(:username, ~r/^[A-Z\.a-z]+$/, message: "must only contain alphabet or .")
     |> cast_assoc(:basic, required: true, with: &Basic.changeset/2)
     |> validate_email()
   end
 
   defp validate_email(changeset) do
     changeset
-    |> validate_required([:email])
+    |> validate_required([:email, :username])
     |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
     |> validate_length(:email, max: 160)
     |> unsafe_validate_unique(:email, Glass.Repo)

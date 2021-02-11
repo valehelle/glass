@@ -11,6 +11,11 @@
   <%= email_input f, :email, required: true %>
   <%= error_tag f, :email %>
 
+
+  <%= label f, :username %>
+  <%= text_input f, :username, required: true %>
+  <%= error_tag f, :username %>
+
   <div>
     <%= submit "Register" %>
   </div>

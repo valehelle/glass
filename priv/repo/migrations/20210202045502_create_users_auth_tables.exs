@@ -6,6 +6,7 @@ defmodule Glass.Repo.Migrations.CreateUsersAuthTables do
 
     create table(:users) do
       add :email, :citext, null: false
+      add :username, :citext, null: false
       add :hashed_password, :string
       add :repository_token, :string
       add :dev_to_token, :string
@@ -13,7 +14,7 @@ defmodule Glass.Repo.Migrations.CreateUsersAuthTables do
       timestamps()
     end
 
-    create unique_index(:users, [:email])
+    create unique_index(:users, [:email, :username])
 
     create table(:users_tokens) do
       add :user_id, references(:users, on_delete: :delete_all), null: false

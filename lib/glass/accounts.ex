@@ -33,6 +33,12 @@ defmodule Glass.Accounts do
     Repo.get_by(User, email: email)
   end
 
+  def get_user_by_username(username) when is_binary(username) do
+    Repo.get_by(User, username: username) |> Repo.preload([:basic, :educations, :languages, :works, :skills, :blogs, projects: [:keywords]])
+  end
+
+  
+
   @doc """
   Gets a user by email and password.
 

@@ -2,6 +2,7 @@ defmodule GlassWeb.PageController do
   use GlassWeb, :controller
   alias Glass.Subscibers
   alias Glass.Subscibers.Account
+  alias Glass.Accounts
 
   def index(conn, _params) do
     render(conn, "index.html")
@@ -24,4 +25,12 @@ defmodule GlassWeb.PageController do
   def success(conn, _params) do
     render(conn, "success.html")
   end
+
+  def user_profile(conn, %{"username" => username}) do
+    user = Accounts.get_user_by_username(username)
+    render(conn, "profile.html", user: user)
+  end
+  
+
+
 end

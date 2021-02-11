@@ -7,5 +7,6 @@ defmodule GlassWeb.DashboardController do
     user = conn.assigns.current_user
     render(conn, "index.html", user: conn.assigns.current_user)
   end
-  
+
+
 end

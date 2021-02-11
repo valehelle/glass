@@ -1,0 +1,124 @@
+
+<div style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); margin-bottom: 1px;">
+<div class="container">
+  <div class="row">
+    <div class="col py-2">
+      <div class="mx-auto mt-5 mb-5">
+        <img width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="...">
+        <h3 class="text-center mt-4"><%= @user.basic.name %></h3>
+        <h6 class="text-center mt-2" style="color: #65686C">Software Engineer at RHB</h6>
+        <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.loc_address %>, <%= @user.basic.loc_city %>, <%= @user.basic.loc_region %>, <%= @user.basic.loc_country_code %></h6>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+<div style="background-color: #f0f2f5; padding-bottom: 40px;">
+  <div class="container" >
+    <div class="row">
+      <div class="col-12">
+        <div class="mx-auto mt-5" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+          <h4 >About</h4>
+          <h6 class="mt-4"><%= @user.basic.summary %></h6>
+        </div>
+      </div>
+
+
+      <div class="col-12 mt-3">
+        <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+          <h4>Skills</h4>
+          <%= for skill  <- @user.skills do %>
+            <div class="mt-4">
+              <h5><%= skill.name %></h5>
+              <h6 style = "color: #65686C"><%= skill.level %></h6>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+
+     <div class="col-12 mt-3">
+        <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+          <h4>Experience</h4>
+          <%= for work  <- @user.works do %>
+            <div class="mt-4">
+              <h5>Software Engineer</h5>
+              <h6 style = "color: #65686C" ><%= work.name %></h6>
+              <h6 style = "color: #65686C"><%= work.start_date %> - <%= work.end_date %></h6>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+
+
+      <div class="col-12 mt-3">
+        <div class="mx-auto" style=" border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px;">
+          <h4>Projects</h4>
+            <div class = "container">
+              <div class = "row">
+                <%= for project  <- @user.projects do %>
+                  <div class="col-6 mt-4" style="padding-left: 0px;">
+                    <div style="height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                      <h5><%= project.name %></h5>
+                      <h6><%= project.description %></h6>
+                      <div class = "container">
+                        <div class = "row">
+                          <%= for keyword  <- project.keywords do %>
+                            <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= keyword.description %></h6>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-12 mt-3">
+        <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+          <h4>Blog</h4>
+            <div class = "container">
+              <div class = "row">
+                <%= for blog  <- @user.blogs do %>
+                  <div class="col-6 mt-4" style="padding-left: 0px;">
+                    <div style="height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                      <h5><%= blog.title %></h5>
+                      <h6><%= blog.description %></h6>
+                      <div class = "container">
+                        <div class = "row">
+                            <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= blog.public_reactions_count %> reactions</h6>                
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-12 mt-3">
+        <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4 >Languages</h4>
+            <div>
+              <%= for language  <- @user.languages do %>
+                <div class="mt-4">
+                  <h5 class=""><%= language.name %></h5>
+                  <h6 style = "color: #65686C"><%= language.fluency %></h6>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
