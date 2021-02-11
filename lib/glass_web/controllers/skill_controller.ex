@@ -6,8 +6,14 @@ defmodule GlassWeb.SkillController do
   alias Glass.Profile.Skill
   
   def show(conn, %{"skill_id" => id}) do
+    user = conn.assigns.current_user
     skill = Profile.get_skill!(id)
-    render(conn, "show.html", skill: skill)
+    if user.id == skill.user_id do
+        render(conn, "show.html", skill: skill)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+    
   end
 
 
@@ -30,8 +36,14 @@ defmodule GlassWeb.SkillController do
   def edit(conn, %{"skill_id" => id}) do
     user = conn.assigns.current_user
     skill = Profile.get_skill!(id)
-    changeset = Skill.changeset(skill, %{}, user)
-    render(conn, "edit.html", changeset: changeset, skill: skill)
+    if user.id == skill.user_id do
+      changeset = Skill.changeset(skill, %{}, user)
+      render(conn, "edit.html", changeset: changeset, skill: skill)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+
+
   end
 
 

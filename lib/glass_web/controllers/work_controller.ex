@@ -6,8 +6,13 @@ defmodule GlassWeb.WorkController do
   alias Glass.Profile.Work
   
   def show(conn, %{"work_id" => id}) do
+    user = conn.assigns.current_user
     work = Profile.get_work!(id)
-    render(conn, "show.html", work: work)
+    if user.id == work.user_id do
+      render(conn, "show.html", work: work)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
   end
 
 
@@ -29,9 +34,14 @@ defmodule GlassWeb.WorkController do
 
   def edit(conn, %{"work_id" => id}) do
     user = conn.assigns.current_user
-    work = Profile.get_work!(id)
-    changeset = Work.changeset(work, %{}, user)
-    render(conn, "edit.html", changeset: changeset, work: work)
+    work = Profile.get_work!(id) 
+    if user.id == work.user_id do
+      changeset = Work.changeset(work, %{}, user)
+      render(conn, "edit.html", changeset: changeset, work: work)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+    
   end
 
 

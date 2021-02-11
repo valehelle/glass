@@ -7,8 +7,13 @@ defmodule GlassWeb.EducationController do
 
 
   def show(conn, %{"education_id" => id}) do
+    user = conn.assigns.current_user
     education = Profile.get_education!(id)
-    render(conn, "show.html", education: education)
+    if user.id == education.user_id do
+      render(conn, "show.html", education: education)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
   end
 
 
@@ -31,8 +36,12 @@ defmodule GlassWeb.EducationController do
   def edit(conn, %{"education_id" => id}) do
     user = conn.assigns.current_user
     education = Profile.get_education!(id)
-    changeset = Education.changeset(education, %{}, user)
-    render(conn, "edit.html", changeset: changeset, education: education)
+    if user.id == education.user_id do
+      changeset = Education.changeset(education, %{}, user)
+      render(conn, "edit.html", changeset: changeset, education: education)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
   end
 
 

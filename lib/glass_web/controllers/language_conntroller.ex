@@ -6,8 +6,13 @@ defmodule GlassWeb.LanguageController do
   alias Glass.Profile.Language
 
   def show(conn, %{"language_id" => id}) do
+    user = conn.assigns.current_user
     language = Profile.get_language!(id)
-    render(conn, "show.html", language: language)
+    if user.id == language.user_id do
+      render(conn, "show.html", language: language)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
   end
 
 
@@ -30,8 +35,14 @@ defmodule GlassWeb.LanguageController do
   def edit(conn, %{"language_id" => id}) do
     user = conn.assigns.current_user
     language = Profile.get_language!(id)
-    changeset = Language.changeset(language, %{}, user)
-    render(conn, "edit.html", changeset: changeset, language: language)
+    if user.id == language.user_id do
+      changeset = Language.changeset(language, %{}, user)
+      render(conn, "edit.html", changeset: changeset, language: language)
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+
+
   end
 
 
