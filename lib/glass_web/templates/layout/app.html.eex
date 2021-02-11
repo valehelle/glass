@@ -38,7 +38,7 @@
       <div class="container">
         <div class="row">
           <div class="col mt-3">
-            <a href="/" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:40px;">logname</h1></a>
+            <a href="/" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
           </div>
         </div>
       </div>

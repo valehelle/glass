@@ -3,12 +3,11 @@
 <div class="container">
   <div class="row">
     <div class="col py-2">
-      <div class="mx-auto mt-5 mb-5">
-        <img width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="...">
+      <div class="mx-auto mt-5 mb-3">
+        <img width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="Profile">
         <h3 class="text-center mt-4"><%= @user.basic.name %></h3>
         <h6 class="text-center mt-2" style="color: #65686C">Software Engineer at RHB</h6>
         <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.loc_address %>, <%= @user.basic.loc_city %>, <%= @user.basic.loc_region %>, <%= @user.basic.loc_country_code %></h6>
-
       </div>
     </div>
   </div>
@@ -17,7 +16,7 @@
 
 </div>
 </div>
-<div style="background-color: #f0f2f5; padding-bottom: 40px;">
+<div style="background-color: whitesmoke; padding-bottom: 40px;">
   <div class="container" >
     <div class="row">
       <div class="col-12">
@@ -39,7 +38,7 @@
           <% end %>
         </div>
       </div>
-      
+
 
      <div class="col-12 mt-3">
         <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
@@ -63,7 +62,7 @@
               <div class = "row">
                 <%= for project  <- @user.projects do %>
                   <div class="col-6 mt-4" style="padding-left: 0px;">
-                    <div style="height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                    <div style="background-color: whitesmoke;  height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
                       <h5><%= project.name %></h5>
                       <h6><%= project.description %></h6>
                       <div class = "container">
@@ -88,7 +87,7 @@
               <div class = "row">
                 <%= for blog  <- @user.blogs do %>
                   <div class="col-6 mt-4" style="padding-left: 0px;">
-                    <div style="height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                    <div style="background-color: whitesmoke; height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
                       <h5><%= blog.title %></h5>
                       <h6><%= blog.description %></h6>
                       <div class = "container">
