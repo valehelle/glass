@@ -17,3 +17,10 @@ DASHBOARD
     <%= blog.title %>
     </br>
 <% end %>
+ </br>
+ Lannguage
+<%= for language  <- @user.languages do %>
+    <%= language.name %>
+    </br>
+    <%= language.id %>
+<% end %>

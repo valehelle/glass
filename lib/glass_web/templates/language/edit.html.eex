@@ -1,16 +1,13 @@
-<%= form_for @changeset, Routes.language_path(@conn, :create), fn f -> %>
+<%= form_for @changeset, Routes.language_path(@conn, :update, @language.id), fn f -> %>
 
   <%= label f, :name %>
   <%= text_input f, :name%>
   <%= error_tag f, :name %>
-  
 
   <%= label f, :fluency %>
   <%= text_input f, :fluency%>
   <%= error_tag f, :fluency %>
 
-
- <%= submit "Create" %>
+ <%= submit "Update" %>
 
 <% end %>
- 

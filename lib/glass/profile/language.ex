@@ -12,9 +12,10 @@ defmodule Glass.Profile.Language do
   end
 
   @doc false
-  def changeset(language, attrs) do
+  def changeset(language, attrs, user) do
     language
     |> cast(attrs, [:name, :fluency])
     |> validate_required([:name, :fluency])
+    |> put_assoc(:user, user)
   end
 end

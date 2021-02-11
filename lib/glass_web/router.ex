@@ -76,6 +76,13 @@ defmodule GlassWeb.Router do
      get "/education/:education_id/edit", EducationController, :edit
      put "/education/:education_id/edit", EducationController, :update
 
+     get "/language/new", LanguageController, :new
+     post "/language/new", LanguageController, :create
+     get "/language/:language_id", LanguageController, :show
+     get "/language/:language_id/edit", LanguageController, :edit
+     put "/language/:language_id/edit", LanguageController, :update
+
+
 
 #    get "/users/settings", UserSettingsController, :edit
 #    put "/users/settings", UserSettingsController, :update

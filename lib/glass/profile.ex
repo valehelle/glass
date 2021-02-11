@@ -419,7 +419,7 @@ defmodule Glass.Profile do
       ** (Ecto.NoResultsError)
 
   """
-  def get_language!(id), do: Repo.get!(Language, id)
+  def get_language!(id), do: Repo.get!(Language, id) |> Repo.preload(:user)
 
   @doc """
   Creates a language.
@@ -433,9 +433,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_language(attrs \\ %{}) do
+  def create_language(attrs \\ %{}, user) do
     %Language{}
-    |> Language.changeset(attrs)
+    |> Language.changeset(attrs, user)
     |> Repo.insert()
   end
 
@@ -451,9 +451,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_language(%Language{} = language, attrs) do
+  def update_language(%Language{} = language, attrs, user) do
     language
-    |> Language.changeset(attrs)
+    |> Language.changeset(attrs, user)
     |> Repo.update()
   end
 
