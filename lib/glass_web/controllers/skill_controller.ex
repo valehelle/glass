@@ -2,9 +2,48 @@ defmodule GlassWeb.SkillController do
   use GlassWeb, :controller
   alias Glass.Subscibers
   alias Glass.Subscibers.Account
+  alias Glass.Profile
+  alias Glass.Profile.Skill
+  
+  def show(conn, %{"skill_id" => id}) do
+    skill = Profile.get_skill!(id)
+    render(conn, "show.html", skill: skill)
+  end
 
-  def index(conn, _params) do
-    render(conn, "index.html")
+
+  def new(conn, _) do
+    user = conn.assigns.current_user
+    changeset = Skill.changeset(%Skill{}, %{}, user)
+    render(conn, "new.html", changeset: changeset)
+  end
+
+  def create(conn, %{"skill" => skill_params}) do
+    user = conn.assigns.current_user
+    case Profile.create_skill(skill_params, user) do
+      {:ok, skill} ->
+        redirect(conn, to: Routes.dashboard_path(conn, :index))
+      {:error, changeset} -> 
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def edit(conn, %{"skill_id" => id}) do
+    user = conn.assigns.current_user
+    skill = Profile.get_skill!(id)
+    changeset = Skill.changeset(skill, %{}, user)
+    render(conn, "edit.html", changeset: changeset, skill: skill)
+  end
+
+
+  def update(conn, %{"skill_id" => id, "skill" => skill_params}) do
+    user = conn.assigns.current_user
+    skill = Profile.get_skill!(id)
+    case Profile.update_skill(skill, skill_params, user) do
+    {:ok, skill} ->         
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    {:error, changeset} -> 
+      render(conn, "edit.html", changeset: changeset, skill: skill)
+    end
   end
   
 end

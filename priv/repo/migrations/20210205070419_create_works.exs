@@ -8,8 +8,8 @@ defmodule Glass.Repo.Migrations.CreateWorks do
       add :description, :string
       add :position, :string
       add :url, :string
-      add :start_date, :utc_datetime
-      add :end_date, :utc_datetime
+      add :start_date, :date
+      add :end_date, :date
       add :summary, :text
       add :user_id, references(:users, on_delete: :nothing)
 

@@ -1,4 +1,4 @@
-<%= form_for @changeset, Routes.work_path(@conn, :create), fn f -> %>
+<%= form_for @changeset, Routes.work_path(@conn, :update, @work.id), fn f -> %>
 
   <%= label f, :name %>
   <%= text_input f, :name%>
@@ -14,7 +14,6 @@
   <%= text_input f, :end_date , class: "form-control", type: "date" %>
   <%= error_tag f, :end_date %>
 
- <%= submit "Create" %>
+ <%= submit "Update" %>
 
 <% end %>
- 

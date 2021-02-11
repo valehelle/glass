@@ -12,9 +12,10 @@ defmodule Glass.Profile.Skill do
   end
 
   @doc false
-  def changeset(skill, attrs) do
+  def changeset(skill, attrs, user) do
     skill
     |> cast(attrs, [:name, :level])
+    |> put_assoc(:user, user)
     |> validate_required([:name, :level])
   end
 end

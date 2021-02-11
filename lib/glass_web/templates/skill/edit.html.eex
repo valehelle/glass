@@ -1,0 +1,13 @@
+<%= form_for @changeset, Routes.skill_path(@conn, :update, @skill.id), fn f -> %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name%>
+  <%= error_tag f, :name %>
+
+  <%= label f, :level %>
+  <%= text_input f, :level%>
+  <%= error_tag f, :levl %>
+
+ <%= submit "Update" %>
+
+<% end %>

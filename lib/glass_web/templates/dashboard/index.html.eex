@@ -24,3 +24,19 @@ DASHBOARD
     </br>
     <%= language.id %>
 <% end %>
+
+
+ </br>
+ Skill
+<%= for skill  <- @user.skills do %>
+    <%= skill.name %>
+    </br>
+    <%= skill.id %>
+<% end %>
+
+ Work
+<%= for work  <- @user.works do %>
+    <%= work.name %>
+    </br>
+    <%= work.id %>
+<% end %>

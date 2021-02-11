@@ -131,7 +131,7 @@ defmodule Glass.Profile do
       ** (Ecto.NoResultsError)
 
   """
-  def get_work!(id), do: Repo.get!(Work, id)
+  def get_work!(id), do: Repo.get!(Work, id) |> Repo.preload(:user)
 
   @doc """
   Creates a work.
@@ -145,9 +145,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_work(attrs \\ %{}) do
+  def create_work(attrs \\ %{}, user) do
     %Work{}
-    |> Work.changeset(attrs)
+    |> Work.changeset(attrs, user)
     |> Repo.insert()
   end
 
@@ -163,9 +163,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_work(%Work{} = work, attrs) do
+  def update_work(%Work{} = work, attrs, user) do
     work
-    |> Work.changeset(attrs)
+    |> Work.changeset(attrs, user)
     |> Repo.update()
   end
 
@@ -323,7 +323,7 @@ defmodule Glass.Profile do
       ** (Ecto.NoResultsError)
 
   """
-  def get_skill!(id), do: Repo.get!(Skill, id)
+  def get_skill!(id), do: Repo.get!(Skill, id) |> Repo.preload(:user)
 
   @doc """
   Creates a skill.
@@ -337,9 +337,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_skill(attrs \\ %{}) do
+  def create_skill(attrs \\ %{}, user) do
     %Skill{}
-    |> Skill.changeset(attrs)
+    |> Skill.changeset(attrs, user)
     |> Repo.insert()
   end
 
@@ -355,9 +355,9 @@ defmodule Glass.Profile do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_skill(%Skill{} = skill, attrs) do
+  def update_skill(%Skill{} = skill, attrs, user) do
     skill
-    |> Skill.changeset(attrs)
+    |> Skill.changeset(attrs, user)
     |> Repo.update()
   end
 
