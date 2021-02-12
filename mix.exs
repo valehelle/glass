@@ -49,7 +49,8 @@ defmodule Glass.MixProject do
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:guardian, "~> 2.0"},
       {:httpoison, "~> 1.8"},
-      {:neuron, "~> 5.0.0"}
+      {:neuron, "~> 5.0.0"},
+      {:countriex, "~> 0.4"}
     ]
   end
 
