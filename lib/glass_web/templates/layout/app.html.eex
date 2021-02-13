@@ -15,6 +15,7 @@
     
       .btn-primary{
           border-radius: 50px;
+          min-width: 100px;
         }
       </style>
 
@@ -31,14 +32,21 @@
 
 
   </head>
-  <body style="">
-    <main role="main">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <div class="container">
-        <div class="row">
-          <div class="col mt-3">
-            <a href="/" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
+  <body style="background-color: whitesmoke;">
+    <main role="main" >
+      <div style="background-color:white;">
+        <div class="container" >
+          <div class="row">
+            <div class="col mt-3">
+              <a href="/" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
+            </div>
+            <div class="col mt-3">
+              <%= if @current_user do %>
+              <%= link("Log Out", to: "/users/log_out", method: :delete, class: "btn btn-outline-danger", style: "float:right;") %>
+              <%= else %>
+                <%= link("Log In", to: "/users/log_in", method: :get, class: "btn btn-outline-danger", style: "float:right;") %>
+              <%= end %>
+            </div>
           </div>
         </div>
       </div>

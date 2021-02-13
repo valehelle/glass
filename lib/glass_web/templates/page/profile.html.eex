@@ -1,27 +1,25 @@
 
-<div style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); margin-bottom: 1px;">
-<div class="container">
-  <div class="row">
-    <div class="col py-2">
-      <div class="mx-auto mt-5 mb-3">
-        <%= if @user.basic.image != "" do%>
-          <img style= width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="Profile">
-        <% end %>
-        <h3 class="text-center mt-4"><%= @user.basic.name %></h3>
-        <h6 class="text-center mt-2" style="color: #65686C"><%= @user.basic.label %></h6>
-        <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.loc_region %>, <%= country_name(@user.basic.loc_country_code) %></h6>
+<div style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); margin-bottom: 1px; background-color: white;">
+  <div class="container">
+    <div class="row">
+      <div class="col py-2">
+        <div class="mx-auto mt-5 mb-3">
+          <%= if @user.basic.image != "" do%>
+            <img style= width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="Profile">
+          <% end %>
+          <h3 class="text-center mt-4"><%= @user.basic.name %></h3>
+          <h6 class="text-center mt-2" style="color: #65686C"><%= @user.basic.label %></h6>
+          <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.loc_region %>, <%= country_name(@user.basic.loc_country_code) %></h6>
+        </div>
       </div>
     </div>
   </div>
-
-
-
 </div>
-</div>
+
 <div style="background-color: whitesmoke; padding-bottom: 40px;">
   <div class="container" >
     <div class="row">
-      <div class="col-12">
+      <div class="col-md-7 mx-auto">
         <div class="mx-auto mt-5" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
           <h4 >About</h4>
           <h6 class="mt-4"><%= @user.basic.summary %></h6>
@@ -29,51 +27,59 @@
       </div>
 
 
-      <div class="col-12 mt-3">
+      <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
           <h4>Programing languages and frameworks</h4>
           
           <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
+          <div style="border-bottom: solid 1px #ebedf0">
             <h6 style = "color: #65686C" class="mt-4">Daily experience</h6>
             <%= for skill  <- @user.skills do %>
               <div class="">
-                <h5><%= if skill.level == 1 do skill.name else "" end %></h5>
+                <h6><%= if skill.level == 1 do skill.name else "" end %></h6>
               </div>
             <% end %>
+          </div>
            <% end %>
 
           <%= if Enum.find(@user.skills, fn skill -> skill.level == 2 end) != nil do %>
-            <h6 style = "color: #65686C" class="mt-4">Experience</h6>
+          <div style="border-bottom: solid 1px #ebedf0">
+            <h6 style = "color: #65686C" class="mt-2">Experience</h6>
             <%= for skill  <- @user.skills do %>
               <div class="">
-                <h5><%= if skill.level == 2 do skill.name else "" end %></h5>
+                <h6><%= if skill.level == 2 do skill.name else "" end %></h6>
               </div>
             <% end %>
+          </div>
           <% end %>
           
           <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
-            <h6 style = "color: #65686C" class="mt-4">Used in the past</h6>
+          <div style="border-bottom: solid 1px #ebedf0">
+            <h6 style = "color: #65686C" class="mt-2">Used in the past</h6>
             <%= for skill  <- @user.skills do %>
               <div class="">
-                <h5><%= if skill.level == 3 do skill.name else "" end %></h5>
+                <h6><%= if skill.level == 3 do skill.name else "" end %></h6>
               </div>
             <% end %>
+            </div>
           <% end %>
 
           <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
-            <h6 style = "color: #65686C" class="mt-4">Interests and Curiosity</h6>
+            <div style="border-bottom: solid 1px #ebedf0">
+            <h6 style = "color: #65686C" class="mt-2">Interests and Curiosity</h6>
             <%= for skill  <- @user.skills do %>
               <div class="">
-                <h5><%= if skill.level == 4 do skill.name else "" end %></h5>
+                <h6><%= if skill.level == 4 do skill.name else "" end %></h6>
               </div>
             <% end %>
+            </div>
           <% end %>
 
         </div>
       </div>
 
 
-     <div class="col-12 mt-3">
+     <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
           <h4>Experience</h4>
           <%= for work  <- @user.works do %>
@@ -89,13 +95,13 @@
       </div>
 
 
-      <div class="col-12 mt-3">
+      <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style=" border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px;">
           <h4>Projects</h4>
             <div class = "container">
               <div class = "row">
                 <%= for project  <- @user.projects do %>
-                  <div class="col-md-6 mt-4" style="padding-left: 0px;">
+                  <div class="col-md-12 mt-4" style="padding-left: 0px;">
                     <div style="background-color: whitesmoke;  height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
                       <h5><%= project.name %></h5>
                       <h6 style = "color: #65686C"><%= project.description %></h6>
@@ -115,13 +121,13 @@
       </div>
 
       <%= if length(@user.blogs) > 0 do%>
-        <div class="col-12 mt-3">
+        <div class="col-md-7 mx-auto mt-3">
           <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Blog</h4>
               <div class = "container">
                 <div class = "row">
                   <%= for blog  <- @user.blogs do %>
-                    <div class="col-md-6 mt-4" style="padding-left: 0px;">
+                    <div class="col-md-12 mt-4" style="padding-left: 0px;">
                       <div style="background-color: whitesmoke; height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
                         <h5 ><%= blog.title %></h5>
                         <h6 style = "color: #65686C"><%= blog.description %></h6>
@@ -139,7 +145,7 @@
         </div>
       <% end %>
 
-      <div class="col-12 mt-3">
+      <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4 >Languages</h4>
             <div>

@@ -1,42 +1,251 @@
-DASHBOARD
-<%= @user.basic.name %>
-<%= @user.basic.image %>
-<%= @user.repository_token %>
-<%= @user.dev_to_token %>
-<%= for education  <- @user.educations do %>
-    <%= education.institution %>
-    <%= education.id %>
-<% end %>
-</br>
-<%= for project  <- @user.projects do %>
-    <%= project.name %>
-    </br>
-<% end %>
+<div class="container">
+  <div class="row py-5">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto">
+        <h1>Profile</h1>
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Account</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Email</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.email %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Username</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6>https://www.logname.dev/lg/<span style="color: black; font-weight:bold;"><%= @user.username %></span></h6>
+                    </div>
+                </div>
+            </div>
 
-<%= for blog  <- @user.blogs do %>
-    <%= blog.title %>
-    </br>
-<% end %>
- </br>
- Lannguage
-<%= for language  <- @user.languages do %>
-    <%= language.name %>
-    </br>
-    <%= language.id %>
-<% end %>
+        </div>
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Basic</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Name</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.name %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Label</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.label %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Summary</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.summary %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Phone</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.phone %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Address</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.loc_address %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Postal Code</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.loc_postal_code %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>City</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.loc_city %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Region</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= @user.basic.loc_region %></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Country</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6><%= country_name(@user.basic.loc_country_code) %></h6>
+                    </div>
+                </div>
+                
+            </div>
+            <%= link "Edit", to: Routes.basic_path(@conn, :edit),  class: "btn btn-primary mt-3 btn-sm" %>
+
+        </div>
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Education</h4>
+            <div class="container">
+                <%= for education  <- @user.educations do %>
+                    <div class="row">
+                        <div class="col-4" style="padding-left: 0">
+                            <%= education.institution %>
+                        </div>
+                        <div class="col-8">
+                            <%= link "Edit", to: Routes.education_path(@conn, :edit, education.id), style: "float:right" %>
+                        </div>
+                    </div>
+                <% end %>
+                
+            </div>
+            <%= link "Add", to: Routes.education_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
+
+        </div>
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Programing languages and frameworks</h4>
+            <div class="container">
+                <%= for skill  <- @user.skills do %>
+                    <div class="row">
+                        <div class="col-4" style="padding-left: 0">
+                            <%= skill.name %>
+                        </div>
+                        <div class="col-8">
+                            <%= link "Edit", to: Routes.skill_path(@conn, :edit, skill.id), style: "float:right" %>
+                        </div>
+                    </div>
+                <% end %>
+                
+            </div>
+            <%= link "Add", to: Routes.skill_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
+
+        </div>
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Experience</h4>
+            <div class="container">
+                <%= for work  <- @user.works do %>
+                    <div class="row">
+                        <div class="col-4" style="padding-left: 0">
+                            <%= work.name %>
+                        </div>
+                        <div class="col-8">
+                            <%= link "Edit", to: Routes.work_path(@conn, :edit, work.id), style: "float:right" %>
+                        </div>
+                    </div>
+                <% end %>
+                
+            </div>
+            <%= link "Add", to: Routes.work_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
+
+        </div>
 
 
- </br>
- Skill
-<%= for skill  <- @user.skills do %>
-    <%= skill.name %>
-    </br>
-    <%= skill.id %>
-<% end %>
 
- Work
-<%= for work  <- @user.works do %>
-    <%= work.name %>
-    </br>
-    <%= work.id %>
-<% end %>
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Language</h4>
+            <div class="container">
+                <%= for language  <- @user.languages do %>
+                    <div class="row">
+                        <div class="col-4" style="padding-left: 0">
+                            <%= language.name %>
+                        </div>
+                        <div class="col-8">
+                            <%= link "Edit", to: Routes.language_path(@conn, :edit, language.id), style: "float:right" %>
+                        </div>
+                    </div>
+                <% end %>
+                
+            </div>
+            <%= link "Add", to: Routes.language_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
+
+        </div>
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Token</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="col-3" style="padding-left: 0">
+                        <h6>Github token</h6>
+                    </div>
+                    <div class="col-6" style="color: #65686C; overflow: hidden;">
+                        <h6 style="word-wrap: break-word"><%= @user.repository_token %></h6>
+                    </div>
+                    <div class="col-3" style="color: #65686C;">
+                        <%= link "Connect", to: "https://github.com/login/oauth/authorize?client_id=f229649ab635a5539fc9", style: " float:right;" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3" style="padding-left: 0">
+                        <h6>Dev token</h6>
+                    </div>
+                    <div class="col-6" style="color: #65686C">
+                        <h6 style="word-wrap: break-word"><%= @user.dev_to_token %></h6>
+                    </div>
+                    <div class="col-3" style="color: #65686C;">
+                        <%= link "Edit", to: "https://github.com/login/oauth/authorize?client_id=f229649ab635a5539fc9", style: " float:right;" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Blogs</h4>
+            <div class="container">
+                <%= for blog  <- @user.blogs do %>
+                    <div class="row">
+                        <div class="col" style="padding-left: 0">
+                            <%= blog.title %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Projects</h4>
+            <div class="container">
+                <%= for project  <- @user.projects do %>
+                    <div class="row">
+                        <div class="col" style="padding-left: 0">
+                            <%= project.name %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

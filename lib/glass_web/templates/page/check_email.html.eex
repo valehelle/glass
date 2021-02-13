@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto mt-5">
+        <h2 class="mt-3 " style="color: #282C34; font-family: 'Source Code Pro', sans-serif;">A login link has been sent to your email.</h2>
+        <h5 class="mt-3 " style="color: #282C34; font-family: 'Source Code Pro', sans-serif;">Please click on the link to login.</h5>
+      </div>
+    </div>
+  </div>
+</div>

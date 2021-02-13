@@ -80,7 +80,7 @@ defmodule GlassWeb.UserAuth do
     conn
     |> renew_session()
     |> put_resp_cookie(@uuid_cookie, uuid, @remember_me_options)
-    |> redirect(to: signed_in_path(conn))
+    |> redirect(to: "/check_email")
    
   end
 
@@ -187,5 +187,5 @@ defmodule GlassWeb.UserAuth do
 
   defp maybe_store_return_to(conn), do: conn
 
-  defp signed_in_path(_conn), do: "/"
+  defp signed_in_path(_conn), do: "/profile"
 end

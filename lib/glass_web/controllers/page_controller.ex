@@ -30,6 +30,11 @@ defmodule GlassWeb.PageController do
     user = Accounts.get_user_by_username(username)
     render(conn, "profile.html", user: user)
   end
+
+  def check_email(conn, _) do
+    render(conn, "check_email.html")
+  end
+
   
 
 

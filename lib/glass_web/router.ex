@@ -67,7 +67,7 @@ defmodule GlassWeb.Router do
      get "/oauth/github/callback", OauthController, :callback 
      get "/oauth/edit", OauthController, :edit
      put "/oauth/edit", OauthController, :update
-     get "/dashboard", DashboardController, :index
+     get "/profile", DashboardController, :index
      get "/basic", BasicController, :edit
      put "/basic", BasicController, :update
      get "/education/new", EducationController, :new
@@ -105,6 +105,7 @@ defmodule GlassWeb.Router do
     pipe_through [:browser]
     get "/lg/:username", PageController, :user_profile 
     delete "/users/log_out", UserSessionController, :delete
+    get "/check_email", PageController, :check_email
 #    get "/users/confirm", UserConfirmationController, :new
 #    post "/users/confirm", UserConfirmationController, :create
 #    get "/users/confirm/:token", UserConfirmationController, :confirm
