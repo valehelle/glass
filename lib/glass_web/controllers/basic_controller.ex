@@ -9,6 +9,7 @@ defmodule GlassWeb.BasicController do
   def edit(conn, _params) do
     user = conn.assigns.current_user
     basic = user.basic
+
     basic_changeset = Basic.changeset(basic, %{})
     render(conn, "edit.html", changeset: basic_changeset)
   end

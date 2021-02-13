@@ -6,8 +6,9 @@
   
 
   <%= label f, :fluency %>
-  <%= text_input f, :fluency%>
+  <%= select f, :fluency, ["Proficience": 1, "Intermediate": 2, "Beginnner": 3]%>
   <%= error_tag f, :fluency %>
+
 
 
  <%= submit "Create" %>

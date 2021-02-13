@@ -4,15 +4,35 @@
   <%= text_input f, :name%>
   <%= error_tag f, :name %>
   
+  
+  <%= label f, :position %>
+  <%= text_input f, :position%>
+  <%= error_tag f, :position %>
+
+    <%= label f, :description %>
+  <%= text_input f, :description%>
+  <%= error_tag f, :description %>
+
   <%= label f, :start_date %>
-  <%= text_input f, :start_date, class: "form-control", type: "date" %>
+    <%= date_select f, :start_date, builder: fn b -> %>
+      <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
+    <% end %>
   <%= error_tag f, :start_date %>
 
 
 
+
   <%= label f, :end_date %>
-  <%= text_input f, :end_date , class: "form-control", type: "date" %>
+    <%= date_select f, :end_date, builder: fn b -> %>
+      <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
+    <% end %>
   <%= error_tag f, :end_date %>
+
+
+
+  <%= label f, :is_current %>
+  <%= checkbox f, :is_current %>
+  <%= error_tag f, :is_current %>
 
  <%= submit "Create" %>
 

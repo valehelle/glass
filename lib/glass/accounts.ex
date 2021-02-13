@@ -6,7 +6,8 @@ defmodule Glass.Accounts do
   import Ecto.Query, warn: false
   alias Glass.Repo
   alias Glass.Accounts.{User, UserToken, UserNotifier}
-
+  alias Glass.Profile.Work
+  alias Glass.Profile.Blog
 
 
   def update_token(user, attrs)do
@@ -34,7 +35,10 @@ defmodule Glass.Accounts do
   end
 
   def get_user_by_username(username) when is_binary(username) do
-    Repo.get_by(User, username: username) |> Repo.preload([:basic, :educations, :languages, :works, :skills, :blogs, projects: [:keywords]])
+    Repo.get_by(User, username: username) |> Repo.preload([:basic, :educations, :languages, :skills, projects: [:keywords], 
+      works: (from w in Work, order_by: [desc: w.start_date]),
+      blogs: (from b in Blog, order_by: [asc: b.id])
+    ])
   end
 
   

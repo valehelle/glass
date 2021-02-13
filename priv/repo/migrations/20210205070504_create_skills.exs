@@ -4,7 +4,7 @@ defmodule Glass.Repo.Migrations.CreateSkills do
   def change do
     create table(:skills) do
       add :name, :string
-      add :level, :string
+      add :level, :integer
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()

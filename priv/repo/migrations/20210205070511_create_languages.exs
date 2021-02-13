@@ -4,7 +4,7 @@ defmodule Glass.Repo.Migrations.CreateLanguages do
   def change do
     create table(:languages) do
       add :name, :string
-      add :fluency, :string
+      add :fluency, :integer
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()

@@ -4,7 +4,7 @@ defmodule Glass.Profile.Language do
   alias Glass.Accounts.User
 
   schema "languages" do
-    field :fluency, :string
+    field :fluency, :integer
     field :name, :string
     belongs_to :user, User
 

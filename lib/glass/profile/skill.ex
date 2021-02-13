@@ -4,7 +4,7 @@ defmodule Glass.Profile.Skill do
   alias Glass.Accounts.User
 
   schema "skills" do
-    field :level, :string
+    field :level, :integer
     field :name, :string
     belongs_to :user, User
 

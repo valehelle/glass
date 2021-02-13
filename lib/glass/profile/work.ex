@@ -11,6 +11,7 @@ defmodule Glass.Profile.Work do
     field :name, :string
     field :position, :string
     field :start_date, :date
+    field :is_current, :boolean, default: false
     field :summary, :string
     field :url, :string
     belongs_to :user, User
@@ -22,7 +23,7 @@ defmodule Glass.Profile.Work do
   @doc false
   def changeset(work, attrs, user) do
     work
-    |> cast(attrs, [:name, :location, :description, :position, :url, :start_date, :end_date, :summary])
+    |> cast(attrs, [:name, :location, :description, :position, :url, :start_date, :end_date, :summary, :is_current])
     |> put_assoc(:user, user)
   end
 end

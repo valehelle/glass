@@ -6,7 +6,7 @@
   
 
   <%= label f, :level %>
-  <%= text_input f, :level %>
+  <%= select f, :level, ["Daily experience": 1, "Experienced": 2, "Used in the past": 3, "Interests and Curiosity": 4]%>
   <%= error_tag f, :level %>
 
 

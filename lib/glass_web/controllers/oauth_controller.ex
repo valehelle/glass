@@ -66,7 +66,7 @@ defmodule GlassWeb.OauthController do
 
   def get_dev_blogs(access_token) do
     
-    url = "https://dev.to/api/articles/me?per_page=5"
+    url = "https://dev.to/api/articles/me?per_page=6"
     headers = [{"Content-Type", "application/json"}, {"Accept","application/json"}, {"api-key", access_token}]
     case HTTPoison.get url, headers do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} -> 

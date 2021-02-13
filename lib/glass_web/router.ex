@@ -103,7 +103,7 @@ defmodule GlassWeb.Router do
 
   scope "/", GlassWeb do
     pipe_through [:browser]
-    get "/ln/:username", PageController, :user_profile 
+    get "/lg/:username", PageController, :user_profile 
     delete "/users/log_out", UserSessionController, :delete
 #    get "/users/confirm", UserConfirmationController, :new
 #    post "/users/confirm", UserConfirmationController, :create
