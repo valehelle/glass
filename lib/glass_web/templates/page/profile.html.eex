@@ -65,7 +65,7 @@
           <% end %>
 
           <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
-            <div style="border-bottom: solid 1px #ebedf0">
+            <div >
             <h6 style = "color: #65686C" class="mt-2">Interests and Curiosity</h6>
             <%= for skill  <- @user.skills do %>
               <div class="">

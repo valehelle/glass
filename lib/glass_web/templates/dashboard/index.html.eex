@@ -131,10 +131,10 @@
             <div class="container">
                 <%= for skill  <- @user.skills do %>
                     <div class="row">
-                        <div class="col-4" style="padding-left: 0">
-                            <%= skill.name %>
+                        <div class="col-6" style="padding-left: 0">
+                            <%= skill.name %> - <%= get_skill(skill.level) %>
                         </div>
-                        <div class="col-8">
+                        <div class="col-6">
                             <%= link "Edit", to: Routes.skill_path(@conn, :edit, skill.id), style: "float:right" %>
                         </div>
                     </div>
@@ -150,10 +150,10 @@
             <div class="container">
                 <%= for work  <- @user.works do %>
                     <div class="row">
-                        <div class="col-4" style="padding-left: 0">
+                        <div class="col-6" style="padding-left: 0">
                             <%= work.name %>
                         </div>
-                        <div class="col-8">
+                        <div class="col-6">
                             <%= link "Edit", to: Routes.work_path(@conn, :edit, work.id), style: "float:right" %>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                 <%= for language  <- @user.languages do %>
                     <div class="row">
                         <div class="col-4" style="padding-left: 0">
-                            <%= language.name %>
+                            <%= language.name %> -  <%= get_language(language.fluency) %>
                         </div>
                         <div class="col-8">
                             <%= link "Edit", to: Routes.language_path(@conn, :edit, language.id), style: "float:right" %>
@@ -216,12 +216,18 @@
 
         <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Blogs</h4>
-            <div class="container">
+            <div >
                 <%= for blog  <- @user.blogs do %>
-                    <div class="row">
-                        <div class="col" style="padding-left: 0">
-                            <%= blog.title %>
+                    <div class="col-md-12 mt-4" style="padding-left: 0px;">
+                      <div style="background-color: whitesmoke; height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                        <h5 ><%= blog.title %></h5>
+                        <h6 style = "color: #65686C"><%= blog.description %></h6>
+                        <div class = "container">
+                          <div class = "row">
+                              <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= blog.public_reactions_count %> reactions</h6>                
+                          </div>
                         </div>
+                      </div>
                     </div>
                 <% end %>
             </div>
@@ -229,11 +235,19 @@
 
         <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Projects</h4>
-            <div class="container">
+            <div>
                 <%= for project  <- @user.projects do %>
-                    <div class="row">
-                        <div class="col" style="padding-left: 0">
-                            <%= project.name %>
+                    <div class="col-md-12 mt-4" style="padding-left: 0px;">
+                        <div style="background-color: whitesmoke;  height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                        <h5><%= project.name %></h5>
+                        <h6 style = "color: #65686C"><%= project.description %></h6>
+                        <div class = "container">
+                            <div class = "row">
+                            <%= for keyword  <- project.keywords do %>
+                                <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= keyword.description %></h6>
+                            <% end %>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 <% end %>
