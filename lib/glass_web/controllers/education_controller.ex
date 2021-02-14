@@ -25,6 +25,32 @@ defmodule GlassWeb.EducationController do
 
   def create(conn, %{"education" => education_params}) do
     user = conn.assigns.current_user
+    %{"start_date" => %{"month" => start_month, "year" => start_year}, "end_date" => %{"month" => end_month, "year" => end_year}} = education_params
+
+    {start_month, _} = Integer.parse(start_month)
+    start_month = if start_month < 10 do
+              "0#{start_month}"
+            else
+              start_month
+            end
+    
+    start_date = "#{start_year}-#{start_month}-01"
+
+
+    {end_month, _} = Integer.parse(end_month)
+    end_month = if end_month < 10 do
+              "0#{end_month}"
+            else
+              end_month
+            end
+    
+    end_date = "#{end_year}-#{end_month}-01"
+
+
+    education_params = %{education_params | "end_date" => end_date }
+    education_params = %{education_params | "start_date" => start_date }
+
+
     case Profile.create_education(education_params, user) do
       {:ok, education} ->
         redirect(conn, to: Routes.dashboard_path(conn, :index))
@@ -45,10 +71,36 @@ defmodule GlassWeb.EducationController do
   end
 
 
-  def update(conn, %{"education_id" => id, "education" => education_param}) do
+  def update(conn, %{"education_id" => id, "education" => education_params}) do
     user = conn.assigns.current_user
     education = Profile.get_education!(id)
-    case Profile.update_education(education, education_param, user) do
+    
+    %{"start_date" => %{"month" => start_month, "year" => start_year}, "end_date" => %{"month" => end_month, "year" => end_year}} = education_params
+
+    {start_month, _} = Integer.parse(start_month)
+    start_month = if start_month < 10 do
+              "0#{start_month}"
+            else
+              start_month
+            end
+    
+    start_date = "#{start_year}-#{start_month}-01"
+
+
+    {end_month, _} = Integer.parse(end_month)
+    end_month = if end_month < 10 do
+              "0#{end_month}"
+            else
+              end_month
+            end
+    
+    end_date = "#{end_year}-#{end_month}-01"
+
+
+    education_params = %{education_params | "end_date" => end_date }
+    education_params = %{education_params | "start_date" => start_date }
+
+    case Profile.update_education(education, education_params, user) do
     {:ok, education} ->         
       redirect(conn, to: Routes.dashboard_path(conn, :index))
     {:error, changeset} -> 
