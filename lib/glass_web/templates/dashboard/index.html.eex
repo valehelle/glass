@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row py-5">
+  <div class="row py-3">
     <div class="mx-auto col-md-7 py-2">
       <div class="mx-auto">
         <h1>Profile</h1>
@@ -19,7 +19,15 @@
                         <h6>Username</h6>
                     </div>
                     <div class="col-8" style="color: #65686C">
-                        <h6>https://www.logname.dev/lg/<span style="color: black; font-weight:bold;"><%= @user.username %></span></h6>
+                        <a style=" color:  #65686C; " href = "https://www.logname.dev/lg/<%= @user.username %>"><h6>https://www.logname.dev/lg/<span style="color: black; font-weight:bold;"><%= @user.username %></span></h6></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" style="padding-left: 0">
+                        <h6>Photo</h6>
+                    </div>
+                    <div class="col-8" style="color: #65686C">
+                        <h6 style="word-wrap: break-word"><%= @user.basic.image %></h6>
                     </div>
                 </div>
             </div>
@@ -196,7 +204,7 @@
                         <h6 style="word-wrap: break-word"><%= @user.repository_token %></h6>
                     </div>
                     <div class="col-3" style="color: #65686C;">
-                        <%= link "Connect", to: "https://github.com/login/oauth/authorize?client_id=f229649ab635a5539fc9", style: " float:right;" %>
+                        <%= link get_link_name(@user), to: "https://github.com/login/oauth/authorize?client_id=f229649ab635a5539fc9", style: " float:right;" %>
                     </div>
                 </div>
                 <div class="row">

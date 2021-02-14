@@ -1,48 +1,88 @@
 
+<div class="container">
+  <div class="row py-3">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto">
+	  		<h4><a href="/profile">Profile</a> > Basic</h4>
+          <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+
+          
+
+		  <%= form_for @changeset, Routes.basic_path(@conn, :update), fn f -> %>
+
+            <label>
+              Full name:
+            </label>
+			<%= text_input f, :name, class: "form-control"%>
+			<%= error_tag f, :name %>
+			
+            <label class="mt-4">
+              Phone number:
+            </label>
+			<%= text_input f, :phone, class: "form-control"%>
+			<%= error_tag f, :phone %>
+
+			<label class="mt-4">
+              Summary:
+            </label>
+			<%= textarea f, :summary, class: "form-control", rows: 10 %>
 
 
-<%= form_for @changeset, Routes.basic_path(@conn, :update), fn f -> %>
+            <label class="mt-4">
+              Label:
+            </label>				
+			<%= text_input f, :label, class: "form-control"%>
 
-  <%= label f, :name %>
-  <%= text_input f, :name%>
-  <%= error_tag f, :name %>
-  
-  <%= label f, :phone %>
-  <%= text_input f, :phone%>
-  <%= error_tag f, :phone %>
+            <label class="mt-4">
+            	Address:
+            </label>				
+			<%= text_input f, :loc_address, class: "form-control"%>
+			
+			<label class="mt-4">
+              Postal Code:
+            </label>
+			<%= text_input f, :loc_postal_code, class: "form-control"%>
 
-      
-  <%= label f, :summary %>
-  <%= textarea f, :summary%>
+			<label class="mt-4">
+              City:
+            </label>
+			<%= text_input f, :loc_city, class: "form-control"%>
 
-
-      
-  <%= label f, :label %>
-  <%= textarea f, :label%>
-
-    
-  <%= label f, :loc_address %>
-  <%= text_input f, :loc_address%>
-  
-  <%= label f, :loc_country_code %>
-  <%= select f, :loc_country_code, list_country() %>
-
-  <%= label f, :loc_region %>
-  <%= text_input f, :loc_region%>
-
-  <%= label f, :loc_city %>
-  <%= text_input f, :loc_city%>
+			
+			<label class="mt-4">
+              Region:
+            </label>
+			<%= text_input f, :loc_region, class: "form-control"%>
 
 
-
-  <%= label f, :loc_postal_code %>
-  <%= text_input f, :loc_postal_code%>
+			<label class="mt-4">
+              Country:
+            </label>
+			<%= select f, :loc_country_code, list_country(), class: "form-control" %>
 
 
 
 
 
- <%= submit "Update" %>
 
-<% end %>
+
+
+
+
+
+
+
+			<%= submit "Update", class: "btn btn-primary mt-3" %>
+
+			<% end %>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 

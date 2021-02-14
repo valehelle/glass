@@ -29,6 +29,14 @@ defmodule GlassWeb.DashboardView do
     skill
   end
 
+  def get_link_name(user) do
+    if user.repository_token == "" do 
+      "Connect" 
+    else "Refresh"
+    end
+  end
+  
+
 
 
   
