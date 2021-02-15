@@ -215,7 +215,7 @@
                         <h6 style="word-wrap: break-word"><%= @user.dev_to_token %></h6>
                     </div>
                     <div class="col-3" style="color: #65686C;">
-                        <%= link "Edit", to: "https://github.com/login/oauth/authorize?client_id=f229649ab635a5539fc9", style: " float:right;" %>
+                        <%= link "Edit", to: "/oauth/edit", style: " float:right;" %>
                     </div>
                 </div>
             </div>

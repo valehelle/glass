@@ -31,7 +31,8 @@ defmodule GlassWeb.PageView do
     profiencies = [
       "Beginner",
       "Intermediate",
-      "Proficient",
+      "Professional",
+      "Native",
     ]
     {language, _} = List.pop_at(profiencies, language - 1)
     language

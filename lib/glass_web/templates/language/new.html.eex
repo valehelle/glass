@@ -1,17 +1,39 @@
-<%= form_for @changeset, Routes.language_path(@conn, :create), fn f -> %>
+ <div class="container">
+  <div class="row py-3">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto">
+	  		<h4><a href="/profile">Profile</a> > Language</h4>
+          <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
 
-  <%= label f, :name %>
-  <%= text_input f, :name%>
-  <%= error_tag f, :name %>
-  
+        <%= form_for @changeset, Routes.language_path(@conn, :create),  fn f -> %>
 
-  <%= label f, :fluency %>
-  <%= select f, :fluency, ["Proficience": 1, "Intermediate": 2, "Beginnner": 3]%>
-  <%= error_tag f, :fluency %>
+			    <label class="mt-4">
+              Name:
+          </label>
+          <%= text_input f, :name, class: "form-control"%>
+          <%= error_tag f, :name %>
+
+          <label class="mt-4">
+              Fluency:
+          </label>
+          <%= select f, :fluency, ["Beginner": 1, "Intermediate": 2, "Professional": 3, "Native": 4]%>
+          <br/>
+          <%= error_tag f, :fluency %>
 
 
 
- <%= submit "Create" %>
+          <%= submit "Create", class: "btn btn-primary mt-3" %>
 
-<% end %>
- 
+        <% end %>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

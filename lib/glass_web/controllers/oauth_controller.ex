@@ -58,10 +58,15 @@ defmodule GlassWeb.OauthController do
     user = conn.assigns.current_user
     Accounts.update_token(user, oauth_param) 
     %{"dev_to_token" => dev_token} = oauth_param
-
-    {:ok, blogs} = get_dev_blogs(dev_token)
-    Profile.add_blogs(user,  blogs)
-    redirect(conn, to: Routes.dashboard_path(conn, :index))
+    case get_dev_blogs(dev_token) do
+      {:ok, blogs} ->
+        Profile.add_blogs(user,  blogs)
+        redirect(conn, to: Routes.dashboard_path(conn, :index)) 
+      {:error} -> 
+        changeset = User.token_changeset(user, %{}) |> Ecto.Changeset.add_error(:dev_to_token, "Unable to get the latest blog")
+        changeset = %{changeset | action: :insert}
+        render(conn, "edit.html", user: user, changeset: changeset)
+    end
   end
 
   def get_dev_blogs(access_token) do
@@ -72,11 +77,10 @@ defmodule GlassWeb.OauthController do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} -> 
         body = Jason.decode!(body)
         {:ok, body}
-
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
-        IO.inspect "Not found :("
+      {:ok, _} ->
+        {:error}
       {:error, %HTTPoison.Error{reason: reason}} ->
-        IO.inspect reason
+        {:error}
     end 
   end
 
