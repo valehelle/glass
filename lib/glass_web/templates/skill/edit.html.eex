@@ -1,13 +1,44 @@
-<%= form_for @changeset, Routes.skill_path(@conn, :update, @skill.id), fn f -> %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name%>
-  <%= error_tag f, :name %>
+ 
 
-  <%= label f, :level %>
-  <%= text_input f, :level%>
-  <%= error_tag f, :levl %>
 
- <%= submit "Update" %>
+ 
 
-<% end %>
+<div class="container">
+  <div class="row py-3">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto">
+	  		<h4><a href="/profile">Profile</a> > Skill</h4>
+          <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+
+        <%= form_for @changeset, Routes.skill_path(@conn, :edit, @skill.id), fn f -> %>
+
+			    <label class="mt-4">
+              Name:
+          </label>
+          <%= text_input f, :name, class: "form-control"%>
+          <%= error_tag f, :name %>
+          
+
+			    <label class="mt-4">
+              Level:
+          </label>
+          <%= select f, :level,  ["Daily experience": 1, "Experienced": 2, "Used in the past": 3, "Interests and Curiosity": 4], class: "form-control" %>
+          <%= error_tag f, :level %>
+
+
+          <%= submit "Edit", class: "btn btn-primary mt-3" %>
+
+        <% end %>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

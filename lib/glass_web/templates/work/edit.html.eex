@@ -1,33 +1,73 @@
-<%= form_for @changeset, Routes.work_path(@conn, :update, @work.id), fn f -> %>
+<div class="container">
+  <div class="row py-3">
+    <div class="mx-auto col-md-7 py-2">
+      <div class="mx-auto">
+	  		<h4><a href="/profile">Profile</a> > Work</h4>
+          <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
 
-  <%= label f, :name %>
-  <%= text_input f, :name%>
-  <%= error_tag f, :name %>
-  
-    <%= label f, :position %>
-  <%= text_input f, :position%>
-  <%= error_tag f, :position %>
+        <%= form_for @changeset, Routes.work_path(@conn, :edit, @work.id), fn f -> %>
 
-    <%= label f, :description %>
-  <%= text_input f, :description%>
-  <%= error_tag f, :description %>
+			    <label class="mt-4">
+              Name:
+          </label>
+          <%= text_input f, :name, class: "form-control"%>
+          <%= error_tag f, :name %>
 
-  
-  <%= label f, :start_date %>
-    <%= date_select f, :start_date, builder: fn b -> %>
-      <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021]) %>
-    <% end %>
-  <%= error_tag f, :start_date %>
+          <label class="mt-4">
+              Position:
+          </label>
+          <%= text_input f, :position, class: "form-control"%>
+          <%= error_tag f, :position %>
+
+          <label class="mt-4">
+              Description:
+          </label>
+          <%= textarea f, :description, class: "form-control", rows: 5 %>
+          <%= error_tag f, :description %>
+
+          
+
+
+          <label class="mt-4">
+              Start Date:
+          </label>
+            <%= date_select f, :start_date, class: "form-control" , builder: fn b -> %>
+              <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
+            <% end %>
+          <%= error_tag f, :start_date %>
 
 
 
 
-  <%= label f, :end_date %>
-    <%= date_select f, :end_date, builder: fn b -> %>
-      <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021]) %>
-    <% end %>
-  <%= error_tag f, :end_date %>
+          <label class="mt-4">
+              End Date:
+          </label>            <%= date_select f, :end_date, class: "form-control" , builder: fn b -> %>
+              <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
+            <% end %>
+          <%= error_tag f, :end_date %>
 
- <%= submit "Update" %>
 
-<% end %>
+          <label class="mt-4">
+              Is current:
+          </label>
+          <%= checkbox f, :is_current%>
+          <br/>
+          <%= error_tag f, :is_current %>
+
+
+
+          <%= submit "Create", class: "btn btn-primary mt-3" %>
+
+        <% end %>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
