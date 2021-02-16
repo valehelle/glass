@@ -16,6 +16,8 @@ defmodule Glass.Accounts do
     |> Repo.update()
   end
 
+
+
   ## Database getters
 
   @doc """

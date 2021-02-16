@@ -24,6 +24,12 @@ defmodule Glass.Profile.Basic do
     timestamps()
   end
 
+  def social_username_changeset(basic, attrs) do
+    basic
+    |> cast(attrs, [:dev_username, :github_usename])
+  end
+
+
   @doc false
   def changeset(basic, attrs) do
     basic

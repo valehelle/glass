@@ -4,13 +4,14 @@ defmodule GlassWeb.OauthController do
   alias Glass.Accounts
   alias Glass.Accounts.User
 
+
   def get_github_profile(access_token) do
     Neuron.Config.set(json_library: Jason)
     {:ok, resp } = Neuron.query("""
       query { 
         viewer { 
           avatarUrl
-          
+          login
           pinnedItems(first: 6, types: REPOSITORY) {
             nodes{
               ... on Repository {
@@ -61,6 +62,13 @@ defmodule GlassWeb.OauthController do
     case get_dev_blogs(dev_token) do
       {:ok, blogs} ->
         Profile.add_blogs(user,  blogs)
+        if(length(blogs) > 1) do
+          blog = List.first(blogs)
+          %{"user" => %{"username" => dev_to_username}} = blog
+          Profile.update_basic(user.basic, %{"dev_username" => dev_to_username})
+        end
+        
+        #Profile.update_basic(user, dev_to_params)
         redirect(conn, to: Routes.dashboard_path(conn, :index)) 
       {:error} -> 
         changeset = User.token_changeset(user, %{}) |> Ecto.Changeset.add_error(:dev_to_token, "Unable to get the latest blog")
@@ -111,8 +119,8 @@ defmodule GlassWeb.OauthController do
     
   end
 
-  def save_projects(user, %{"data" => %{"viewer" => %{"avatarUrl" => avatarUrl, "pinnedItems" => %{"nodes" => pinned_items}}}}) do
-    basic_param = %{"image" => avatarUrl}
+  def save_projects(user, %{"data" => %{"viewer" => %{"login" => github_username, "avatarUrl" => avatarUrl, "pinnedItems" => %{"nodes" => pinned_items}}}}) do
+    basic_param = %{"image" => avatarUrl, "github_usename" => github_username}
     Profile.update_basic(user.basic, basic_param)
     Profile.add_projects(user, pinned_items)
 
