@@ -27,7 +27,11 @@
                         <h6>Photo</h6>
                     </div>
                     <div class="col-8" style="color: #65686C">
-                        <h6 style="word-wrap: break-word"><%= @user.basic.image %></h6>
+                        <%= if @user.repository_token == nil do %>
+                            <h6 style="word-wrap: break-word; color: #E06C75;">Please connect to your github account to retrieve the photo</h6>
+                        <% else %>
+                            <h6 style="word-wrap: break-word"><%= @user.basic.image %></h6>
+                        <% end%>
                     </div>
                 </div>
             </div>
@@ -225,6 +229,9 @@
         <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Blogs</h4>
             <div >
+            <%= if @user.dev_to_token == nil or @user.dev_to_token == "" do %>
+                <h6 style="word-wrap: break-word; color: #E06C75;">Please connect to your Dev account to retrieve your blog posts.</h6>
+            <% else %>
                 <%= for blog  <- @user.blogs do %>
                     <div class="col-md-12 mt-4" style="padding-left: 0px;">
                       <div style="background-color: whitesmoke; height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
@@ -238,12 +245,19 @@
                       </div>
                     </div>
                 <% end %>
+            <% end%>
+
+
             </div>
         </div>
 
         <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Projects</h4>
             <div>
+
+            <%= if @user.repository_token == nil do %>
+                <h6 style="word-wrap: break-word; color: #E06C75;">Please connect to your Github account to retrieve your pinned repositories.</h6>
+            <% else %>
                 <%= for project  <- @user.projects do %>
                     <div class="col-md-12 mt-4" style="padding-left: 0px;">
                         <div style="background-color: whitesmoke;  height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
@@ -259,6 +273,10 @@
                         </div>
                     </div>
                 <% end %>
+            <% end%>
+
+
+
             </div>
         </div>
 
