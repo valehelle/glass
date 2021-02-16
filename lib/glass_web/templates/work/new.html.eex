@@ -8,21 +8,21 @@
         <%= form_for @changeset, Routes.work_path(@conn, :create), fn f -> %>
 
 			    <label class="mt-4">
-              Name:
+              Company Name:
           </label>
-          <%= text_input f, :name, class: "form-control"%>
+          <%= text_input f, :name, class: "form-control", placeholder: "Logname"%>
           <%= error_tag f, :name %>
 
           <label class="mt-4">
               Position:
           </label>
-          <%= text_input f, :position, class: "form-control"%>
+          <%= text_input f, :position, class: "form-control", placeholder: "Front End Developer"%>
           <%= error_tag f, :position %>
 
           <label class="mt-4">
               Description:
           </label>
-          <%= textarea f, :description, class: "form-control", rows: 5 %>
+          <%= textarea f, :description, class: "form-control", rows: 5, placeholder: "I work as a front end developer in multiple projects under Logname." %>
           <%= error_tag f, :description %>
 
           
@@ -37,7 +37,7 @@
           <%= error_tag f, :start_date %>
 
 
-
+          </br>
 
           <label class="mt-4">
               End Date:
@@ -45,10 +45,10 @@
               <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
             <% end %>
           <%= error_tag f, :end_date %>
-
+          </br>
 
           <label class="mt-4">
-              Is current:
+              Currently working here:
           </label>
           <%= checkbox f, :is_current%>
           <br/>

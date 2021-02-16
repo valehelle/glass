@@ -10,7 +10,7 @@
         <%= form_for @changeset, Routes.education_path(@conn, :update, @education.id), fn f -> %>
 
 			    <label class="mt-4">
-              Name:
+              Institute Name:
           </label>
           <%= text_input f, :institution , class: "form-control" %>
           <%= error_tag f, :institution %>

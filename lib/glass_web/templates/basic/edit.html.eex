@@ -6,53 +6,54 @@
 	  		<h4><a href="/profile">Profile</a> > Basic</h4>
           <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
 
-          
+          <h6 class= "mt-3" style="color : #65686C;">Only your full name, label, summary and country name is going to be displayed in your profile. Other info is only needed to generate the JSONResume.</h6>
 
 		  <%= form_for @changeset, Routes.basic_path(@conn, :update), fn f -> %>
 
             <label>
               Full name:
             </label>
-			<%= text_input f, :name, class: "form-control"%>
-			<%= error_tag f, :name %>
+			  <%= text_input f, :name, class: "form-control", placeholder: "Adam" %>
+			  <%= error_tag f, :name %>
 			
             <label class="mt-4">
               Phone number:
             </label>
-			<%= text_input f, :phone, class: "form-control"%>
+			<%= text_input f, :phone, class: "form-control", placeholder: "+1937-204-5244"%>
 			<%= error_tag f, :phone %>
-
-			<label class="mt-4">
-              Summary:
-            </label>
-			<%= textarea f, :summary, class: "form-control", rows: 10 %>
 
 
             <label class="mt-4">
               Label:
             </label>				
-			<%= text_input f, :label, class: "form-control"%>
+			<%= text_input f, :label, class: "form-control", placeholder: "Web Developer" %>
+
+			      <label class="mt-4">
+              Summary:
+            </label>
+			<%= textarea f, :summary, class: "form-control", rows: 10, placeholder: "Creative web developer dedicated to building and optimizing the performance of user-centric, high impact websites." %>
+
 
             <label class="mt-4">
             	Address:
             </label>				
-			<%= text_input f, :loc_address, class: "form-control"%>
+			<%= text_input f, :loc_address, class: "form-control", placeholder: "4458  Main Street"%>
 			
 			<label class="mt-4">
               Postal Code:
             </label>
-			<%= text_input f, :loc_postal_code, class: "form-control"%>
+			<%= text_input f, :loc_postal_code, class: "form-control", placeholder: "11219"%>
 
 			<label class="mt-4">
               City:
             </label>
-			<%= text_input f, :loc_city, class: "form-control"%>
+			<%= text_input f, :loc_city, class: "form-control", placeholder: "Brooklyn"%>
 
 			
 			<label class="mt-4">
               Region:
             </label>
-			<%= text_input f, :loc_region, class: "form-control"%>
+			<%= text_input f, :loc_region, class: "form-control", placeholder: "New York"%>
 
 
 			<label class="mt-4">
@@ -60,19 +61,7 @@
             </label>
 			<%= select f, :loc_country_code, list_country(), class: "form-control" %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-			<%= submit "Update", class: "btn btn-primary mt-3" %>
+			<%= submit "Update", class: "btn btn-primary mt-5" %>
 
 			<% end %>
 

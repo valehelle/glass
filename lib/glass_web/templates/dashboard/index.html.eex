@@ -2,7 +2,7 @@
   <div class="row py-3">
     <div class="mx-auto col-md-7 py-2">
       <div class="mx-auto">
-        <h1>Profile</h1>
+        <h4>Profile</h4>
         <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Account</h4>
             <div class="container">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-8" style="color: #65686C">
                         <%= if @user.repository_token == nil do %>
-                            <h6 style="word-wrap: break-word; color: #E06C75;">Please connect to your github account to retrieve the photo</h6>
+                            <h6 style="word-wrap: break-word; color: #E06C75;">Please connect to your github account to retrieve the profile photo.</h6>
                         <% else %>
                             <h6 style="word-wrap: break-word"><%= @user.basic.image %></h6>
                         <% end%>

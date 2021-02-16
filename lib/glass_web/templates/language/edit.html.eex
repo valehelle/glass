@@ -10,7 +10,7 @@
 			    <label class="mt-4">
               Name:
           </label>
-          <%= text_input f, :name, class: "form-control"%>
+          <%= text_input f, :name, class: "form-control", placeholder: "English"  %>
           <%= error_tag f, :name %>
 
           <label class="mt-4">
