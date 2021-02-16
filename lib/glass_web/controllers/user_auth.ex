@@ -70,13 +70,44 @@ defmodule GlassWeb.UserAuth do
   end
 
 
+  def send_email(email, url) do
+        headers = %{
+              "Authorization" => "Bearer #{Application.get_env(:glass, Glass.Repo)[:send_grid_token]}",
+              "Content-Type" => "application/json"
+            }
+            body = %{
+              "personalizations" => 
+                [
+                  %{"to" => 
+                    [
+                      %{"email" => email},
+                    ]
+                    }
+                ],
+                "from" => 
+                %{
+                  "email" => "do-not-reply@logname.dev",
+                },
+                "subject" => "Magic Link to login",
+                "content" => [
+                  %{"type"=> "text/html", "value" => "<h4>You requested a magic link to sign in, and here it is! Note that this link expires in 24 hours and can only be used once. #{url}</h4>"}
+                ]
+                
+            }
+            url = "https://api.sendgrid.com/v3/mail/send"
+          HTTPoison.post url, Jason.encode!(body), headers
+    end
+
+
   # Generate a magic link an sent it to user email
 
   def create_magic_link(conn, user, params \\ %{}) do
 
     {token, uuid} = Accounts.generate_oauth_token(user)
-    IO.inspect "http://localhost:3000/magic_link/login?token=#{token}"
+    url = "http://localhost:3000/magic_link/login?token=#{token}"
+    IO.inspect url
     
+    send_email(user.email, url)
     conn
     |> renew_session()
     |> put_resp_cookie(@uuid_cookie, uuid, @remember_me_options)

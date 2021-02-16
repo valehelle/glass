@@ -89,7 +89,7 @@ defmodule GlassWeb.OauthController do
     user = conn.assigns.current_user
     url = "https://github.com/login/oauth/access_token"
     options = [{"Content-Type", "application/json"}, {"Accept","application/json"}]
-    param = %{"client_id" => "f229649ab635a5539fc9", "client_secret" => "750355a8627b0ad5800929112a3701c608619efc", "code" => code}
+    param = %{"client_id" => "f229649ab635a5539fc9", "client_secret" => Application.get_env(:glass, Glass.Repo)[:github_client_secret], "code" => code}
 
     case HTTPoison.post url, Jason.encode!(param), options do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} -> 

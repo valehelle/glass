@@ -7,7 +7,9 @@ config :glass, Glass.Repo,
   database: "glass_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 10,
+  github_client_secret: "750355a8627b0ad5800929112a3701c608619efc",
+  send_grid_token: "test token"
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
