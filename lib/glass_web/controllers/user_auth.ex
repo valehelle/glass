@@ -90,7 +90,7 @@ defmodule GlassWeb.UserAuth do
                 },
                 "subject" => "Magic Link to login",
                 "content" => [
-                  %{"type"=> "text/html", "value" => "<h4>You requested a magic link to sign in, and here it is! Note that this link expires in 24 hours and can only be used once. #{url}</h4>"}
+                  %{"type"=> "text/html", "value" => "<h4>You requested a magic link to sign in, and here it is! Note that this link expires in 24 hours and can only be used once. </h4> <a href=\"#{url}\">Click here to login</a>"}
                 ]
                 
             }
@@ -104,7 +104,7 @@ defmodule GlassWeb.UserAuth do
   def create_magic_link(conn, user, params \\ %{}) do
 
     {token, uuid} = Accounts.generate_oauth_token(user)
-    url = "http://localhost:3000/magic_link/login?token=#{token}"
+    url = "https://www.logname.dev/magic_link/login?token=#{token}"
     IO.inspect url
     
     send_email(user.email, url)
