@@ -70,23 +70,27 @@ defmodule GlassWeb.Router do
      get "/profile", DashboardController, :index
      get "/basic", BasicController, :edit
      put "/basic", BasicController, :update
+
      get "/education/new", EducationController, :new
      post "/education/new", EducationController, :create
      get "/education/:education_id", EducationController, :show
      get "/education/:education_id/edit", EducationController, :edit
      put "/education/:education_id/edit", EducationController, :update
+     delete "/education/:education_id/edit", EducationController, :delete
 
      get "/language/new", LanguageController, :new
      post "/language/new", LanguageController, :create
      get "/language/:language_id", LanguageController, :show
      get "/language/:language_id/edit", LanguageController, :edit
      put "/language/:language_id/edit", LanguageController, :update
+     delete "/language/:language_id/edit", LanguageController, :delete
 
      get "/skill/new", SkillController, :new
      post "/skill/new", SkillController, :create
      get "/skill/:skill_id", SkillController, :show
      get "/skill/:skill_id/edit", SkillController, :edit
      put "/skill/:skill_id/edit", SkillController, :update
+     delete "/skill/:skill_id/edit", SkillController, :delete
 
 
      get "/work/new", WorkController, :new
@@ -94,7 +98,7 @@ defmodule GlassWeb.Router do
      get "/work/:work_id", WorkController, :show
      get "/work/:work_id/edit", WorkController, :edit
      put "/work/:work_id/edit", WorkController, :update
-
+     delete "/work/:work_id/edit", WorkController, :delete  
 
 #    get "/users/settings", UserSettingsController, :edit
 #    put "/users/settings", UserSettingsController, :update

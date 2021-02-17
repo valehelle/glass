@@ -4,7 +4,7 @@
       <div class="mx-auto">
 	  		<h4><a href="/profile">Profile</a> > Work</h4>
           <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
-
+                    <%= link("Delete", to: Routes.work_path(@conn, :delete, @work.id), data: [confirm: "Are you sure you want to delete?"], method: :delete, class: "btn btn-danger" , style: "float:right; border-radius: 50px; min-width: 100px;")%>
         <%= form_for @changeset, Routes.work_path(@conn, :edit, @work.id), fn f -> %>
 
 			    <label class="mt-4">

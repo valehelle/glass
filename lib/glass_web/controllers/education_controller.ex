@@ -109,6 +109,18 @@ defmodule GlassWeb.EducationController do
   end
 
 
+  def delete(conn, %{"education_id" => id}) do
+    user = conn.assigns.current_user
+    education = Profile.get_education!(id)
+    if user.id == education.user_id do
+      Profile.delete_education(education)
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+  end
+
+
 
   
 end

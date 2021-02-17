@@ -108,4 +108,18 @@ defmodule GlassWeb.WorkController do
     end
   end
   
+
+  def delete(conn, %{"work_id" => id}) do
+    user = conn.assigns.current_user
+    work = Profile.get_work!(id)
+    if user.id == work.user_id do
+      Profile.delete_work(work)
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+  end
+
+
+
 end

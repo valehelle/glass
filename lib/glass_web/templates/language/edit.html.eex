@@ -4,6 +4,7 @@
       <div class="mx-auto">
 	  		<h4><a href="/profile">Profile</a> > Language</h4>
           <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+                    <%= link("Delete", to: Routes.language_path(@conn, :delete, @language.id), data: [confirm: "Are you sure you want to delete?"], method: :delete, class: "btn btn-danger" , style: "float:right; border-radius: 50px; min-width: 100px;")%>
 
         <%= form_for @changeset, Routes.language_path(@conn, :update, @language.id),  fn f -> %>
 

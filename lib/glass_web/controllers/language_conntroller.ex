@@ -56,4 +56,18 @@ defmodule GlassWeb.LanguageController do
       render(conn, "edit.html", changeset: changeset, language: language)
     end
   end
+
+
+  def delete(conn, %{"language_id" => id}) do
+    user = conn.assigns.current_user
+    language = Profile.get_language!(id)
+    if user.id == language.user_id do
+      Profile.delete_language(language)
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+  end
+
+
 end

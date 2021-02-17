@@ -58,4 +58,18 @@ defmodule GlassWeb.SkillController do
     end
   end
   
+
+
+  def delete(conn, %{"skill_id" => id}) do
+    user = conn.assigns.current_user
+    skill = Profile.get_skill!(id)
+    if user.id == skill.user_id do
+      Profile.delete_skill(skill)
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    else
+      redirect(conn, to: Routes.dashboard_path(conn, :index))
+    end
+  end
+
+
 end
