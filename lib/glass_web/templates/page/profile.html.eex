@@ -94,7 +94,7 @@
         </div>
       </div>
 
-
+    <%= if length(@user.projects) > 0 do %>
       <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style=" border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px;">
             <div class="row">
@@ -126,8 +126,9 @@
             </div>
         </div>
       </div>
-
-      <%= if length(@user.blogs) > 0 do%>
+      <% end %>
+      
+      <%= if length(@user.blogs) > 0 do %>
         <div class="col-md-7 mx-auto mt-3">
           <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             

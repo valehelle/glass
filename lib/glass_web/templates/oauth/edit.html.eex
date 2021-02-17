@@ -6,6 +6,7 @@
       <div class="mx-auto">
 	  		<h4><a href="/profile">Profile</a> > Language</h4>
           <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <h6>Generate your dev token by going to <span style="font-weight:bold;">Settings</span> > <span style="font-weight:bold;">Accounts</span> > <span style="font-weight:bold;">DEV Community API Keys</span></h6>
 
         <%= form_for @changeset, Routes.oauth_path(@conn, :update),  fn f -> %>
 
