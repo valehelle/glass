@@ -37,8 +37,8 @@
       <div style="background-color:white;">
         <div class="container" >
           <div class="row">
-            <div class="col mt-3">
-              <a href="/" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
+            <div class="col mt-3 pb-2">
+              <a href="<%= if @current_user do "/profile" else "/" end %>" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
             </div>
             <div class="col mt-3">
               <%= if @current_user do %>
