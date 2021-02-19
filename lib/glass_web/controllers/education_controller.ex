@@ -53,7 +53,7 @@ defmodule GlassWeb.EducationController do
 
     case Profile.create_education(education_params, user) do
       {:ok, education} ->
-        redirect(conn, to: Routes.dashboard_path(conn, :index))
+        redirect(conn, to: "/profile#education-parent")
       {:error, changeset} -> 
         render(conn, "new.html", changeset: changeset)
     end
@@ -102,7 +102,8 @@ defmodule GlassWeb.EducationController do
 
     case Profile.update_education(education, education_params, user) do
     {:ok, education} ->         
-      redirect(conn, to: Routes.dashboard_path(conn, :index))
+      redirect(conn, to: "/profile#education-parent")
+
     {:error, changeset} -> 
       render(conn, "edit.html", changeset: changeset, education: education)
     end
