@@ -18,14 +18,14 @@
             <label>
               Email address:
             </label>
-            <%= email_input f, :email, required: true, class: "form-control" %>
+            <%= email_input f, :email, required: true, class: "form-control", placeholder: "ali@gmail.com" %>
             <%= error_tag f, :email %>
 
 
             <label class="mt-4">
               Username:
             </label>
-            <%= text_input f, :username, required: true, class: "form-control", placeholder: "eli.ile" %>
+            <%= text_input f, :username, required: true, class: "form-control", placeholder: "Muhammad.Ali" %>
             <%= error_tag f, :username %>
 
             <div>
