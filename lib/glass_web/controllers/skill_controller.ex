@@ -27,7 +27,7 @@ defmodule GlassWeb.SkillController do
     user = conn.assigns.current_user
     case Profile.create_skill(skill_params, user) do
       {:ok, skill} ->
-       redirect(conn, to: "/profile#skill-parent")
+       redirect(conn, to: "/profile#skill")
       {:error, changeset} -> 
         render(conn, "new.html", changeset: changeset)
     end
@@ -52,7 +52,7 @@ defmodule GlassWeb.SkillController do
     skill = Profile.get_skill!(id)
     case Profile.update_skill(skill, skill_params, user) do
     {:ok, skill} ->         
-      redirect(conn, to: "/profile#skill-parent")
+      redirect(conn, to: "/profile#skill")
 
     {:error, changeset} -> 
       render(conn, "edit.html", changeset: changeset, skill: skill)

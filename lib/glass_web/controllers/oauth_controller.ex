@@ -69,7 +69,7 @@ defmodule GlassWeb.OauthController do
         end
         
         #Profile.update_basic(user, dev_to_params)
-        redirect(conn, to: "/profile#token-parent")
+        redirect(conn, to: "/profile#token")
       {:error} -> 
         changeset = User.token_changeset(user, %{}) |> Ecto.Changeset.add_error(:dev_to_token, "Unable to get the latest blog")
         changeset = %{changeset | action: :insert}
@@ -106,10 +106,10 @@ defmodule GlassWeb.OauthController do
             Accounts.update_token(user, %{"repository_token" => access_token})
             {:ok, body} =  get_github_profile(access_token)
             save_projects(user, body)
-            redirect(conn, to: "/profile#token-parent")
+            redirect(conn, to: "/profile#token")
           %{"error" => error, "error_description" => error_description} ->
              IO.inspect "Error"
-            redirect(conn, to: "/profile#token-parent")
+            redirect(conn, to: "/profile#token")
         end
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         IO.inspect "Not found :("

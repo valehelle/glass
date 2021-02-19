@@ -52,7 +52,7 @@ defmodule GlassWeb.WorkController do
     user = conn.assigns.current_user
     case Profile.create_work(work_params, user) do
       {:ok, work} ->
-         redirect(conn, to: "/profile#work-parent")
+         redirect(conn, to: "/profile#work")
       {:error, changeset} -> 
         render(conn, "new.html", changeset: changeset)
     end
@@ -102,7 +102,7 @@ defmodule GlassWeb.WorkController do
     
     case Profile.update_work(work, work_params, user) do
     {:ok, work} ->         
-      redirect(conn, to: "/profile#work-parent")
+      redirect(conn, to: "/profile#work")
     {:error, changeset} -> 
       render(conn, "edit.html", changeset: changeset, work: work)
     end

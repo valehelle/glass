@@ -26,7 +26,7 @@ defmodule GlassWeb.LanguageController do
     user = conn.assigns.current_user
     case Profile.create_language(language_params, user) do
       {:ok, language} ->
-        redirect(conn, to: "/profile#language-parent")
+        redirect(conn, to: "/profile#language")
       {:error, changeset} -> 
         render(conn, "new.html", changeset: changeset)
     end
@@ -51,7 +51,7 @@ defmodule GlassWeb.LanguageController do
     language = Profile.get_language!(id)
     case Profile.update_language(language, language_params, user) do
     {:ok, language} ->         
-      redirect(conn, to: "/profile#language-parent")
+      redirect(conn, to: "/profile#language")
 
     {:error, changeset} -> 
       render(conn, "edit.html", changeset: changeset, language: language)

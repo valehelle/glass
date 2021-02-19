@@ -13,7 +13,7 @@
                         <h6>Email</h6>
                     </div>
                     <div class="col-8" style="color: #65686C">
-                        <h6><%= @user.email %></h6>
+                        <h6 style="word-wrap: break-word"><%= @user.email %></h6>
                     </div>
                 </div>
                 <div class="row">
@@ -21,7 +21,7 @@
                         <h6>Username</h6>
                     </div>
                     <div class="col-8" style="color: #65686C">
-                        <a style=" color:  #65686C; " href = "https://www.logname.dev/lg/<%= @user.username %>"><h6>https://www.logname.dev/lg/<span style="color: black; font-weight:bold;"><%= @user.username %></span></h6></a>
+                        <a style=" color:  #65686C; word-wrap: break-word" href = "https://www.logname.dev/lg/<%= @user.username %>"><h6>https://www.logname.dev/lg/<span style="color: black; font-weight:bold;"><%= @user.username %></span></h6></a>
                     </div>
                 </div>
                 <div class="row">
@@ -67,7 +67,7 @@
 
         </div>
 
-        <div id="basic-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="basic" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Basic</h4>
             <div class="container">
                 <div class="row">
@@ -148,7 +148,7 @@
 
         </div>
 
-        <div id="education-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="education" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Education</h4>
             <div class="container">
                 <%= for education  <- @user.educations do %>
@@ -167,7 +167,7 @@
 
         </div>
 
-        <div id="skill-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="skill" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Programing languages and frameworks</h4>
             <div class="container">
                 <%= for skill  <- @user.skills do %>
@@ -186,7 +186,7 @@
 
         </div>
 
-        <div id="work-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="work" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Work Experience</h4>
             <div class="container">
                 <%= for work  <- @user.works do %>
@@ -207,7 +207,7 @@
 
 
 
-        <div id="language-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="language" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Language</h4>
             <div class="container">
                 <%= for language  <- @user.languages do %>
@@ -226,7 +226,7 @@
 
         </div>
 
-        <div id="token-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="token" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Token</h4>
             <div class="container">
                 <div class="row">
@@ -255,7 +255,7 @@
         </div>
 
 
-        <div id="blog-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="blog" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Blogs</h4>
             <div >
             <%= if @user.dev_to_token == nil or @user.dev_to_token == "" do %>
@@ -280,7 +280,7 @@
             </div>
         </div>
 
-        <div id="project-parent" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+        <div id="project" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Projects</h4>
             <div>
 

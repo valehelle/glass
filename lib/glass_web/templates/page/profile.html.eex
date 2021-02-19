@@ -119,7 +119,8 @@
                       <div class = "container">
                         <div class = "row">
                           <%= for keyword  <- project.keywords do %>
-                            <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= keyword.description %></h6>
+                            <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px; margin-right: 5px;"><%= keyword.description %></h6>
+
                           <% end %>
                         </div>
                       </div>
