@@ -8,6 +8,7 @@ defmodule Glass.Accounts do
   alias Glass.Accounts.{User, UserToken, UserNotifier}
   alias Glass.Profile.Work
   alias Glass.Profile.Blog
+  alias Glass.Profile.Education
 
 
   def update_token(user, attrs)do

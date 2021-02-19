@@ -32,7 +32,7 @@
             </label>
           </br>
           <%= date_select f, :start_date, class: "form-control" , builder: fn b -> %>
-              <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
+              <%= b.(:month, [value: @education.start_date.month]) %> / <%= b.(:year, [options: 1960..2021, value: @education.start_date.year]) %>
           <% end %>
           </br>
           <%= error_tag f, :start_date %>
@@ -42,7 +42,7 @@
             </label>
           </br>
           <%= date_select f, :end_date, class: "form-control" , builder: fn b -> %>
-              <%= b.(:month, []) %> / <%= b.(:year, [options: 1960..2021, value: 2021]) %>
+              <%= b.(:month, [value: @education.end_date.month])  %> / <%= b.(:year, [options: 1960..2021, value: @education.end_date.year]) %>
           <% end %>
           </br>
           <%= error_tag f, :end_date %>

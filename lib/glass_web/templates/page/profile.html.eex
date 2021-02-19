@@ -94,6 +94,9 @@
         </div>
       </div>
 
+
+
+
     <%= if length(@user.projects) > 0 do %>
       <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style=" border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px;">
@@ -127,6 +130,10 @@
         </div>
       </div>
       <% end %>
+
+
+
+
       
       <%= if length(@user.blogs) > 0 do %>
         <div class="col-md-7 mx-auto mt-3">
@@ -161,6 +168,35 @@
           </div>
         </div>
       <% end %>
+
+            <%= if length(@user.educations) > 0 do %>
+      <div class="col-md-7 mx-auto mt-3">
+        <div class="mx-auto" style=" border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px;">
+            <div class="row">
+                <div class="col-6">
+                  <h4>Education</h4>
+                </div>
+                                 
+            </div>
+            <div class = "container">
+              <div class = "row">
+                <%= for education  <- @user.educations do %>
+                  <div class="col-md-12 mt-4" style="padding-left: 0px;">
+                    <div style="">
+                      <h5><%= education.institution %></h5>
+                      <h6 style = "color: #65686C"><%= get_date(education.start_date) %> - <%= get_date(education.end_date)  %></h6>
+                      <h6><%= education.area %></h6>
+            
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+        </div>
+      </div>
+      <% end %>
+
+      
 
       <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
