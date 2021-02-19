@@ -102,7 +102,7 @@
                   <h4>Pinned Repos</h4>
                           </div>
                   <div class="col-6">
-                    <h5 style="float:right; padding-right:15px;"><a href = "https://www.github.com/<%= @user.basic.github_usename %>">Visit Github</a></h5>
+                    <h5 style="float:right; padding-right:15px; text-align:right;"><a href = "https://www.github.com/<%= @user.basic.github_usename %>">Visit Github</a></h5>
                   </div>                     
             </div>
             <div class = "container">
@@ -137,7 +137,7 @@
                   <h4>Blog</h4>
                           </div>
                   <div class="col-6">
-                    <h5 style="float:right; padding-right:15px;"><a href = "https://dev.to/<%= @user.basic.dev_username %>">Visit Dev.to</a></h5>
+                    <h5 style="float:right; padding-right:15px; text-align:right;"><a href = "https://dev.to/<%= @user.basic.dev_username %>">Visit Dev</a></h5>
                   </div>                     
               </div>
               <div class = "container">
