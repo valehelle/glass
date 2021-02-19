@@ -51,11 +51,13 @@ defmodule Glass.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
 
+    
     attrs = Map.merge(attrs, %{"basic" => %{}})
     user
     |> cast(attrs, [:email, :username])
     |> validate_format(:username, ~r/^[A-Z\.a-z]+$/, message: "must only contain alphabet or .")
     |> cast_assoc(:basic, required: true, with: &Basic.changeset/2)
+    |> unsafe_validate_unique(:username, Glass.Repo)
     |> validate_email()
   end
 

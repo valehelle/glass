@@ -4,10 +4,10 @@
   <div class="row py-5">
     <div class="col py-2">
       <div class="mx-auto mt-5">
-        <h1 class = "text-md-center" style="font-size:56px; color: #282C34; font-family: 'Source Code Pro', sans-serif;">One place to know you</h1>
+        <h1 class = "text-md-center" style="font-size:56px; color: #282C34; font-family: 'Source Code Pro', sans-serif;">Create your developer portfolio</h1>
         <h4 class="mt-3 px-md-5 text-md-center" style="color: #282C34; font-family: 'Source Code Pro', sans-serif;">Show case your programming experience and projects in one place.</h4>
         <div class="mx-auto mt-5" style="width:200px">
-        <%= link("Register", to: Routes.user_registration_path(@conn, :new), method: :get, class: "btn btn-primary my-2", style: "width: 100%") %>
+        <%= link("Create now", to: Routes.user_registration_path(@conn, :new), method: :get, class: "btn btn-primary my-2", style: "width: 100%") %>
         </div>
       </div>
     </div>
@@ -19,8 +19,8 @@
     <div class="row">
       <div class="col py-3">
         <div class="mx-auto  py-5">
-          <h1 style="color: white; font-family: 'Source Code Pro', sans-serif;">Sync everything</h1>
-          <h4 style="color: white; font-family: 'Source Code Pro', sans-serif;">Connect your Github and Dev account so that every post you made and every repo you pinned is always up to date on your portfolio.</h4>
+          <h1 style="color: white; font-family: 'Source Code Pro', sans-serif;">A single URL for everything</h1>
+          <h4 style="color: white; font-family: 'Source Code Pro', sans-serif;">You don't need 3 different URL just to show your working experience, Github repos and personal website.</h4>
         </div>
       </div>
     </div>

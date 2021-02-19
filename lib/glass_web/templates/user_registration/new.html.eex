@@ -25,7 +25,7 @@
             <label class="mt-4">
               Username:
             </label>
-            <%= text_input f, :username, required: true, class: "form-control" %>
+            <%= text_input f, :username, required: true, class: "form-control", placeholder: "eli.ile" %>
             <%= error_tag f, :username %>
 
             <div>

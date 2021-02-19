@@ -38,13 +38,13 @@
         <div class="container" >
           <div class="row">
             <div class="col mt-3 pb-2">
-              <a href="<%= if @current_user do "/profile" else "/" end %>" style="text-decoration: none;"><h1 style="color: #E06C75; font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
+              <a href="<%= if @current_user do "/profile" else "/" end %>" style="color: #65686C; text-decoration: none;"><h1 style="font-family: 'Source Code Pro', sans-serif; font-size:30px;">logname</h1></a>
             </div>
             <div class="col mt-3">
               <%= if @current_user do %>
-              <%= link("Log Out", to: "/users/log_out", method: :delete, class: "btn btn-outline-danger", style: "float:right;") %>
+              <%= link("Log Out", to: "/users/log_out", method: :delete, class: "btn btn-outline-primary", style: "float:right;", id: "login-btn") %>
               <%= else %>
-                <%= link("Log In", to: "/users/log_in", method: :get, class: "btn btn-outline-danger", style: "float:right;") %>
+                <%= link("Log In", to: "/users/log_in", method: :get, class: "btn btn-outline-primary", style: "float:right;", id: "login-btn") %>
               <%= end %>
             </div>
           </div>
