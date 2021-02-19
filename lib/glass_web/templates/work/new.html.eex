@@ -56,7 +56,7 @@
 
 
 
-          <%= submit "Create", class: "btn btn-primary mt-3" %>
+          <%= submit "Add", class: "btn btn-primary mt-3" %>
 
         <% end %>
 

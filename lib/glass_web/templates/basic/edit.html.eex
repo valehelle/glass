@@ -61,7 +61,7 @@
             </label>
 			<%= select f, :loc_country_code, list_country(), class: "form-control" %>
 
-			<%= submit "Update", class: "btn btn-primary mt-5" %>
+			<%= submit "Edit", class: "btn btn-primary mt-5" %>
 
 			<% end %>
 

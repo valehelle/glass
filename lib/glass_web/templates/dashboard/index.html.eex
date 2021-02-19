@@ -301,12 +301,44 @@
                     </div>
                 <% end %>
             <% end%>
-
-
-
             </div>
         </div>
 
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Projects</h4>
+            <div>
+
+            <%= if @user.repository_token == nil do %>
+                <h6 style="word-wrap: break-word; color: #E06C75;">Please connect to your Github account to retrieve your pinned repositories.</h6>
+            <% else %>
+                <%= for project  <- @user.projects do %>
+                    <div class="col-md-12 mt-4" style="padding-left: 0px;">
+                        <div style="background-color: whitesmoke;  height: 100%; padding: 16px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">
+                        <h5><%= project.name %></h5>
+                        <h6 style = "color: #65686C"><%= project.description %></h6>
+                        <div class = "container">
+                            <div class = "row">
+                            <%= for keyword  <- project.keywords do %>
+                                <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= keyword.description %></h6>
+                            <% end %>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                <% end %>
+            <% end%>
+            </div>
+        </div>
+
+
+        <div class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Resume</h4>
+            <div>
+                <%= link "Get JSON Resume Format", to: Routes.resume_path(@conn, :json_resp),  class: "btn btn-primary mt-3" %>
+                <%= link "Download Resume", to: Routes.resume_path(@conn, :index),  class: "btn btn-primary mt-3" %>
+
+            </div>
+        </div>
         </div>
       </div>
     </div>

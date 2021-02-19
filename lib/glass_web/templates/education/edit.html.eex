@@ -17,6 +17,16 @@
           <%= text_input f, :institution , class: "form-control" %>
           <%= error_tag f, :institution %>
           
+
+
+          <label class="mt-4">
+              Principal studies:
+          </label>
+          <%= text_input f, :area , class: "form-control", placeholder: "Bachelor in Computer Software Engineer" %>
+          <%= error_tag f, :area %>
+
+
+
 			    <label class="mt-4">
               Start Date:
             </label>
@@ -37,7 +47,7 @@
           </br>
           <%= error_tag f, :end_date %>
 
-          <%= submit "Add", class: "btn btn-primary mt-3" %>
+          <%= submit "Edit", class: "btn btn-primary mt-3" %>
         <% end %>
 
         </div>

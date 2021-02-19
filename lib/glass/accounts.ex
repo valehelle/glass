@@ -37,8 +37,9 @@ defmodule Glass.Accounts do
   end
 
   def get_user_by_username(username) when is_binary(username) do
-    Repo.get_by(User, username: username) |> Repo.preload([:basic, :educations, :languages, :skills, projects: [:keywords], 
+    Repo.get_by(User, username: username) |> Repo.preload([:basic, :languages, :skills, projects: [:keywords], 
       works: (from w in Work, order_by: [desc: w.start_date]),
+      educations: (from e in Education, order_by: [desc: e.start_date]),
       blogs: (from b in Blog, order_by: [asc: b.id])
     ])
   end
