@@ -1,4 +1,7 @@
 <style>
+    .nothing{
+        
+    }
     #header{
         display: none;
     }
