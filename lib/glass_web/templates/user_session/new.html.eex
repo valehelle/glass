@@ -9,6 +9,8 @@
           <%= if @error_message do %>
             <div class="alert alert-danger">
               <p><%= @error_message %></p>
+              <p>If you registered on 20 February you need to register again.</p>
+              <p>More info <a href="https://dev.to/tehaisperlis/i-delete-my-live-prod-database-and-have-no-backup-2kp4">here</a>.</p>
             </div>
           <% end %>
 
