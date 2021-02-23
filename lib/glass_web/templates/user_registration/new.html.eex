@@ -7,6 +7,7 @@
           <div class="mx-auto mt-5" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
 
           <h2 style="color: #282C34;" class="mb-3">Register</h2>
+          <h6 class="mb-3">Logname uses magic link for a password-free sign in.</h6>
 
           <%= form_for @changeset, Routes.user_registration_path(@conn, :create), fn f -> %>
             <%= if @changeset.action do %>
