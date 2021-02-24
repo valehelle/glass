@@ -47,6 +47,7 @@
                                 <h5 class="title" style="text-align: right;">Name</h5>
                             </div>
                             <div class="mx-auto col-8" >  
+                                      <div class="value" style="background-color: #e8e8e8; width: 300px; color: #e8e8e8;  border-radius: 5px;">dd</div>
                             <span class="value" style="font-weight: bold;" ><%= @user.basic.name %></span>
                             </div>
                         </div>
@@ -55,9 +56,11 @@
                             <div class="mx-auto col-4" >  
                                 <h5 class="title" style="text-align: right;">Address</h5>
                             </div>
-                            <div class="mx-auto col-8" >  
+                            <div class="mx-auto col-8" > 
+                                                                  <div class="value" style="background-color: #e8e8e8; width: 500px; color: #e8e8e8;  border-radius: 5px;">dd</div>
+ 
                                 <span class="value"  >
-                                    <%= @user.basic.loc_address %>, <%= @user.basic.loc_postal_code %>, <%= @user.basic.loc_city %>, <%= country_name(@user.basic.loc_country_code) %>
+
                                 </span>
                             </div>
                         </div>
@@ -68,6 +71,8 @@
                             </div>
                             <div class="mx-auto col-8" >  
                                 <span class="value"  >
+<div class="value" style="background-color: #e8e8e8; width: 200px; color: #e8e8e8;  border-radius: 5px;">dd</div>
+
                                     <%= @user.basic.phone %>
                                 </span>
                             </div>
@@ -80,7 +85,8 @@
                             </div>
                             <div class="mx-auto col-8" >  
                                 <span class="value"  >
-                                    <%= @user.email %>
+                                <div class="value" style="background-color: #e8e8e8; width: 100px; color: #e8e8e8;  border-radius: 5px;">dd</div>
+
                                 </span>
                             </div>
                         </div>
@@ -94,6 +100,33 @@
                             <div class="mx-auto col-8" >  
                             </div>
                         </div>
+                        <div class="row list do-not-break">
+                                <div class="mx-auto col-4" >  
+                                    <h5 class="title" style="text-align: right;">Dates</h5>
+                                </div>
+                                <div class="mx-auto col-8" >  
+<div class="value" style="background-color: #e8e8e8; width: 300px; color: #e8e8e8;  border-radius: 5px;">dd</div>                                </div>
+                                
+                                <div class="mx-auto col-4" >  
+                                    <h5 class="title" style="text-align: right;">Position</h5>
+                                </div>
+                                <div class="mx-auto col-8" >  
+<div class="value" style="background-color: #e8e8e8; width: 100px; color: #e8e8e8;  border-radius: 5px;">dd</div>                                </div>
+
+                                <div class="mx-auto col-4" >  
+                                    <h5 class="title" style="text-align: right;">Responsibilities</h5>
+                                </div>
+                                <div class="mx-auto col-8" >  
+<div class="value" style="background-color: #e8e8e8; width: 500px; height: 100px; margin-bottom: 10px; color: #e8e8e8;  border-radius: 5px;">dd</div>                                </div>
+                                 
+                                 <div class="mx-auto col-4" >  
+                                    <h5 class="title" style="text-align: right;">Employed</h5>
+                                </div>
+                                <div class="mx-auto col-8" >  
+<div class="value" style="background-color: #e8e8e8; width: 200px; color: #e8e8e8;  border-radius: 5px;">dd</div>                                </div>
+                                
+                            </div>
+
                         <%= for work  <- @user.works do %>
                             <div class="row list do-not-break">
                                 <div class="mx-auto col-4" >  
@@ -137,32 +170,29 @@
                             <div class="mx-auto col-8" >  
                             </div>
                         </div>
-                        <%= for project  <- @user.projects do %>
                             <div class="row list do-not-break">
                                 <div class="mx-auto col-4" >  
                                     <h5 class="title" style="text-align: right;">Title</h5>
                                 </div>
                                 <div class="mx-auto col-8" >  
-                                    <span class="value"><%= project.name %></span>
+                                    <div class="value" style="background-color: #e8e8e8; width: 200px; margin-bottom: 10px; color: #e8e8e8;  border-radius: 5px;">dd</div>                                
                                 </div>
                                 
                                 <div class="mx-auto col-4" >  
                                     <h5 class="title" style="text-align: right;">Description</h5>
                                 </div>
                                 <div class="mx-auto col-8" >  
-                                    <span class="value"><%= project.description %></span>
+                                    <div class="value" style="background-color: #e8e8e8; width: 300px; margin-bottom: 10px; color: #e8e8e8;  border-radius: 5px;">dd</div>                              
                                 </div>
 
                                 <div class="mx-auto col-4" >  
                                     <h5 class="title" style="text-align: right;">URL</h5>
                                 </div>
                                 <div class="mx-auto col-8" >  
-                                    <span class="value"><%= project.url %></span>
+                                    <div class="value" style="background-color: #e8e8e8; width: 100px; margin-bottom: 10px; color: #e8e8e8;  border-radius: 5px;">dd</div>                          
                                 </div>
                                 
                             </div>
-
-                        <% end %>
                     </div>
 
 
@@ -241,15 +271,3 @@
     </div>
 </div>
 
-<script>
-if (document.readyState == 'complete') {
-    window.print()
-} else {
-    document.onreadystatechange = function () {
-        if (document.readyState === "complete") {
-            window.print()
-        }
-    }
-}
-    
-</script>
