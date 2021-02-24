@@ -11,6 +11,14 @@ defmodule Glass.Accounts do
   alias Glass.Profile.Education
 
 
+
+  def list_user do
+    Repo.all(User) |> Repo.preload([:basic, :educations, :languages, :works, :skills, :blogs, projects: [:keywords]])
+  end
+
+
+
+
   def update_token(user, attrs)do
     user
     |> User.token_changeset(attrs)

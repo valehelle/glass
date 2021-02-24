@@ -70,6 +70,7 @@ defmodule GlassWeb.Router do
      get "/profile", DashboardController, :index
      get "/basic", BasicController, :edit
      put "/basic", BasicController, :update
+     get "/admin", AdminController, :index 
 
      get "/resume/json", ResumeController, :json_resp 
      get "/resume", ResumeController, :index 
