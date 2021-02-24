@@ -42,7 +42,7 @@
             </br>
 
         <%= for blog <- user.blogs do  %>
-            <%=  blog.name %>
+            <%=  blog.title %>
             </br>
         <%= end %>
             </br>
