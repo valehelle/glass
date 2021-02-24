@@ -1,6 +1,6 @@
 <style>
-    .nothing{
-        
+    #footer{
+      display: none;  
     }
     #header{
         display: none;

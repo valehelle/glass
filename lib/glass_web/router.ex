@@ -114,6 +114,8 @@ defmodule GlassWeb.Router do
     get "/lg/:username", PageController, :user_profile 
     delete "/users/log_out", UserSessionController, :delete
     get "/check_email", PageController, :check_email
+    get "/terms", PageController, :terms
+    get "/privacy", PageController, :privacy
 #    get "/users/confirm", UserConfirmationController, :new
 #    post "/users/confirm", UserConfirmationController, :create
 #    get "/users/confirm/:token", UserConfirmationController, :confirm
