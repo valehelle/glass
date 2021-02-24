@@ -5,8 +5,9 @@ defmodule GlassWeb.AdminController do
   
   def index(conn, _params) do
     user = conn.assigns.current_user
-    users = Accounts.list_user()
+    
     if(String.equivalent?(user.email, "hazmiirfan92@gmail.com")) do
+      users = Accounts.list_user()
       render(conn, "index.html", users: users)
     else
       redirect(conn, to: "/")
