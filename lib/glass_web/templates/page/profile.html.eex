@@ -27,6 +27,9 @@
 <div style="background-color: whitesmoke; padding-bottom: 40px;">
   <div class="container" >
     <div class="row">
+
+      <%= if @user.basic.summary != "" do %>
+
       <div class="col-md-7 mx-auto">
         <div class="mx-auto mt-5" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
           <h4 >About</h4>
@@ -34,73 +37,76 @@
         </div>
       </div>
 
+      <% end %>
+      <%= if length(@user.skills) > 0 do %>
+        <div class="col-md-7 mx-auto mt-3">
+          <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Programing languages and frameworks</h4>
+            
+            <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
+            <div style="border-bottom: solid 1px #ebedf0">
+              <h6 style = "color: #65686C" class="mt-4">Daily experience</h6>
+              <%= for skill  <- @user.skills do %>
+                <div class="">
+                  <h6><%= if skill.level == 1 do skill.name else "" end %></h6>
+                </div>
+              <% end %>
+            </div>
+            <% end %>
 
-      <div class="col-md-7 mx-auto mt-3">
-        <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
-          <h4>Programing languages and frameworks</h4>
-          
-          <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
-          <div style="border-bottom: solid 1px #ebedf0">
-            <h6 style = "color: #65686C" class="mt-4">Daily experience</h6>
-            <%= for skill  <- @user.skills do %>
-              <div class="">
-                <h6><%= if skill.level == 1 do skill.name else "" end %></h6>
+            <%= if Enum.find(@user.skills, fn skill -> skill.level == 2 end) != nil do %>
+            <div style="border-bottom: solid 1px #ebedf0">
+              <h6 style = "color: #65686C" class="mt-2">Experience</h6>
+              <%= for skill  <- @user.skills do %>
+                <div class="">
+                  <h6><%= if skill.level == 2 do skill.name else "" end %></h6>
+                </div>
+              <% end %>
+            </div>
+            <% end %>
+            
+            <%= if Enum.find(@user.skills, fn skill -> skill.level == 3 end) != nil do %>
+            <div style="border-bottom: solid 1px #ebedf0">
+              <h6 style = "color: #65686C" class="mt-2">Used in the past</h6>
+              <%= for skill  <- @user.skills do %>
+                <div class="">
+                  <h6><%= if skill.level == 3 do skill.name else "" end %></h6>
+                </div>
+              <% end %>
               </div>
             <% end %>
+
+            <%= if Enum.find(@user.skills, fn skill -> skill.level == 4 end) != nil do %>
+              <div >
+              <h6 style = "color: #65686C" class="mt-2">Interests and Curiosity</h6>
+              <%= for skill  <- @user.skills do %>
+                <div class="">
+                  <h6><%= if skill.level == 4 do skill.name else "" end %></h6>
+                </div>
+              <% end %>
+              </div>
+            <% end %>
+
           </div>
-           <% end %>
+        </div>
+      <% end %>
 
-          <%= if Enum.find(@user.skills, fn skill -> skill.level == 2 end) != nil do %>
-          <div style="border-bottom: solid 1px #ebedf0">
-            <h6 style = "color: #65686C" class="mt-2">Experience</h6>
-            <%= for skill  <- @user.skills do %>
-              <div class="">
-                <h6><%= if skill.level == 2 do skill.name else "" end %></h6>
-              </div>
-            <% end %>
+      <%= if length(@user.works) > 0 do %>
+        <div class="col-md-7 mx-auto mt-3">
+            <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+              <h4>Work Experience</h4>
+              <%= for work  <- @user.works do %>
+                <div class="mt-4">
+                  <h5><%= work.position %></h5>
+                  <h6><%= work.name %></h6>
+                  <h6 style = "color: #65686C"><%= get_date(work.start_date) %> - <%= if work.is_current do "Present" else get_date(work.end_date)  end %></h6>
+                  <h6><%= work.description %></h6>
+                </div>
+              <% end %>
+
+            </div>
           </div>
-          <% end %>
-          
-          <%= if Enum.find(@user.skills, fn skill -> skill.level == 3 end) != nil do %>
-          <div style="border-bottom: solid 1px #ebedf0">
-            <h6 style = "color: #65686C" class="mt-2">Used in the past</h6>
-            <%= for skill  <- @user.skills do %>
-              <div class="">
-                <h6><%= if skill.level == 3 do skill.name else "" end %></h6>
-              </div>
-            <% end %>
-            </div>
-          <% end %>
-
-          <%= if Enum.find(@user.skills, fn skill -> skill.level == 4 end) != nil do %>
-            <div >
-            <h6 style = "color: #65686C" class="mt-2">Interests and Curiosity</h6>
-            <%= for skill  <- @user.skills do %>
-              <div class="">
-                <h6><%= if skill.level == 4 do skill.name else "" end %></h6>
-              </div>
-            <% end %>
-            </div>
-          <% end %>
-
-        </div>
-      </div>
-
-
-     <div class="col-md-7 mx-auto mt-3">
-        <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
-          <h4>Work Experience</h4>
-          <%= for work  <- @user.works do %>
-            <div class="mt-4">
-              <h5><%= work.position %></h5>
-              <h6><%= work.name %></h6>
-              <h6 style = "color: #65686C"><%= get_date(work.start_date) %> - <%= if work.is_current do "Present" else get_date(work.end_date)  end %></h6>
-              <h6><%= work.description %></h6>
-            </div>
-          <% end %>
-
-        </div>
-      </div>
+        <% end %>
 
 
 
@@ -164,11 +170,6 @@
   
                         <a href="<%= blog.url %>"><h5 ><%= blog.title %></h5></a>
                         <h6 style = "color: #65686C"><%= blog.description %></h6>
-                        <div class = "container">
-                          <div class = "row">
-                              <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px;"><%= blog.public_reactions_count %> reactions</h6>                
-                          </div>
-                        </div>
                       </div>
                     </div>
                   <% end %>
@@ -178,7 +179,7 @@
         </div>
       <% end %>
 
-            <%= if length(@user.educations) > 0 do %>
+    <%= if length(@user.educations) > 0 do %>
       <div class="col-md-7 mx-auto mt-3">
         <div class="mx-auto" style=" border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px;">
             <div class="row">
@@ -206,21 +207,22 @@
       <% end %>
 
       
-
-      <div class="col-md-7 mx-auto mt-3">
-        <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
-            <h4 >Languages</h4>
-            <div>
-              <%= for language  <- @user.languages do %>
-                <div class="mt-4">
-                  <h5 class=""><%= language.name %></h5>
-                  <h6 style = "color: #65686C"><%= get_language(language.fluency) %></h6>
-                </div>
-              <% end %>
+      <%= if length(@user.languages) > 0 do %>
+        <div class="col-md-7 mx-auto mt-3">
+          <div class="mx-auto" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+              <h4 >Languages</h4>
+              <div>
+                <%= for language  <- @user.languages do %>
+                  <div class="mt-4">
+                    <h5 class=""><%= language.name %></h5>
+                    <h6 style = "color: #65686C"><%= get_language(language.fluency) %></h6>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
 
     </div>
   </div>
