@@ -16,6 +16,7 @@ config :glass, Glass.Repo,
   url: database_url,
   send_grid_token: System.get_env("send_grid_token"),
   github_client_secret: System.get_env("github_client_secret"),
+  github_client_id: System.get_env("github_client_id"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 secret_key_base =
