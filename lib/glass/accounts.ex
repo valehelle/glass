@@ -49,7 +49,7 @@ defmodule Glass.Accounts do
     Repo.get_by(User, username: username) |> Repo.preload([:basic, :languages, :skills, projects: [:keywords], 
       works: (from w in Work, order_by: [desc: w.start_date]),
       educations: (from e in Education, order_by: [desc: e.start_date]),
-      blogs: (from b in Blog, order_by: [asc: b.id])
+      blogs: (from b in Blog, order_by: [asc: b.id], preload: [:tags])
     ])
   end
 
@@ -281,7 +281,7 @@ defmodule Glass.Accounts do
   """
   def get_user_by_session_token(token) do
     {:ok, query} = UserToken.verify_session_token_query(token)
-    Repo.one(query) |> Repo.preload([:basic, :educations, :languages, :works, :skills, :blogs, projects: [:keywords]])
+    Repo.one(query) |> Repo.preload([:basic, :educations, :languages, :works, :skills, blogs: [:tags], projects: [:keywords]])
   end
 
   @doc """

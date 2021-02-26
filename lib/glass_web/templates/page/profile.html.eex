@@ -170,6 +170,14 @@
   
                         <a href="<%= blog.url %>"><h5 ><%= blog.title %></h5></a>
                         <h6 style = "color: #65686C"><%= blog.description %></h6>
+                        <div class = "container">
+                          <div class = "row">
+                            <%= for tag <- blog.tags do %>
+                              <h6 style="background-color: #282C34; color: white; padding: 5px; border-radius: 5px; font-size: 11px; margin-right: 5px;"><%= tag.description %></h6>
+
+                            <% end %>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   <% end %>

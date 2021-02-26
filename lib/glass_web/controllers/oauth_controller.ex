@@ -61,7 +61,7 @@ defmodule GlassWeb.OauthController do
     %{"dev_to_token" => dev_token} = oauth_param
     case get_dev_blogs(dev_token) do
       {:ok, blogs} ->
-        Profile.add_blogs(user,  blogs)
+        Profile.add_blogs(user, blogs)
         if(length(blogs) > 1) do
           blog = List.first(blogs)
           %{"user" => %{"username" => dev_to_username}} = blog
