@@ -4,7 +4,7 @@ defmodule Glass.Repo.Migrations.CreateTags do
   def change do
     create table(:tags) do
       add :description, :string
-      add :blog_id, references(:blogs, on_delete: :nothing)
+      add :blog_id, references(:blogs, on_delete: :delete_all)
 
       timestamps()
     end

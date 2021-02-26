@@ -92,12 +92,37 @@ defmodule GlassWeb.OauthController do
     end 
   end
 
+  def blog_refresh(conn, _) do
+    user = conn.assigns.current_user
+    case get_dev_blogs(user.dev_to_token) do
+      {:ok, blogs} ->
+        Profile.add_blogs(user, blogs)
+        if(length(blogs) > 1) do
+          blog = List.first(blogs)
+          %{"user" => %{"username" => dev_to_username}} = blog
+          Profile.update_basic(user.basic, %{"dev_username" => dev_to_username})
+        end
+        redirect(conn, to: "/profile#blog")
+      {:error} -> 
+        redirect(conn, to: "/profile#token")
+    end
+  end
+
+  def project_refresh(conn, _) do
+    user = conn.assigns.current_user
+    {:ok, body} =  get_github_profile(user.repository_token)
+    save_projects(user, body)
+    redirect(conn, to: "/profile#project")
+  end
+
+
+
   def callback(conn, %{"code" => code}) do
 
     user = conn.assigns.current_user
     url = "https://github.com/login/oauth/access_token"
     options = [{"Content-Type", "application/json"}, {"Accept","application/json"}]
-    param = %{"client_id" => "f229649ab635a5539fc9", "client_secret" => Application.get_env(:glass, Glass.Repo)[:github_client_secret], "code" => code}
+    param = %{"client_id" => Application.get_env(:glass, Glass.Repo)[:github_client_id], "client_secret" => Application.get_env(:glass, Glass.Repo)[:github_client_secret], "code" => code}
 
     case HTTPoison.post url, Jason.encode!(param), options do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} -> 

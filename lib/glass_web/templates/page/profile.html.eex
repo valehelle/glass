@@ -146,9 +146,6 @@
       </div>
       <% end %>
 
-
-
-
       
       <%= if length(@user.blogs) > 0 do %>
         <div class="col-md-7 mx-auto mt-3">

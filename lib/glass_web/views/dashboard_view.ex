@@ -37,6 +37,9 @@ defmodule GlassWeb.DashboardView do
     end
   end
   
+  def get_github_url() do
+    "https://github.com/login/oauth/authorize?client_id=#{Application.get_env(:glass, Glass.Repo)[:github_client_id]}"
+  end
 
 
 

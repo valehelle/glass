@@ -65,6 +65,8 @@ defmodule GlassWeb.Router do
   scope "/", GlassWeb do
     pipe_through [:browser, :require_authenticated_user]
      get "/oauth/github/callback", OauthController, :callback 
+     get "/blog/refresh", OauthController, :blog_refresh 
+     get "/project/refresh", OauthController, :project_refresh 
      get "/oauth/edit", OauthController, :edit
      put "/oauth/edit", OauthController, :update
      get "/profile", DashboardController, :index
