@@ -10,7 +10,8 @@ config :glass, Glass.Repo,
   pool_size: 10,
   github_client_secret: "55b8ba4c0b66fdce99310d5b1ad0b80349a726b5",
   send_grid_token: "test token",
-  github_client_id: "bdd0ef5f0e0edae94b91"
+  github_client_id: "bdd0ef5f0e0edae94b91",
+  crypto: "2SRgH57Qqg9rvsmcgYH6L9X2QHqOx3ItdfvL+7zL6RA="
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

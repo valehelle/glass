@@ -50,7 +50,8 @@ defmodule Glass.MixProject do
       {:guardian, "~> 2.0"},
       {:httpoison, "~> 1.8"},
       {:neuron, "~> 5.0.0"},
-      {:countriex, "~> 0.4"}
+      {:countriex, "~> 0.4"},
+      {:cloak_ecto, "~> 1.1.1"}
     ]
   end
 

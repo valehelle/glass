@@ -13,6 +13,8 @@ defmodule Glass.Application do
       GlassWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Glass.PubSub},
+      # Crypto
+      Glass.Vault,
       # Start the Endpoint (http/https)
       GlassWeb.Endpoint
       # Start a worker by calling: Glass.Worker.start_link(arg)
