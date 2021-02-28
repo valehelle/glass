@@ -56,7 +56,7 @@ defmodule Glass.Accounts.User do
     user
     |> cast(attrs, [:email, :username])
     |> validate_format(:username, ~r/^[A-Z\.a-z]+$/, message: "must only contain alphabet or .")
-    |> validate_length(:username, min: 2, max: 20)
+    |> validate_length(:username, min: 2, max: 50)
     |> cast_assoc(:basic, required: true, with: &Basic.changeset/2)
     |> unsafe_validate_unique(:username, Glass.Repo)
     |> validate_email()
