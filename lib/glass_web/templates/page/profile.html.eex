@@ -15,7 +15,7 @@
           <%= if @user.basic.image != "" do%>
             <img style= width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="Profile">
           <% end %>
-          <h3 class="text-center mt-4"><%= @user.basic.name %></h3>
+          <h3 class="text-center mt-4"><%= @user.basic.encrypt_name %></h3>
           <h6 class="text-center mt-2" style="color: #65686C"><%= @user.basic.label %></h6>
           <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.loc_region %>, <%= country_name(@user.basic.loc_country_code) %></h6>
         </div>
