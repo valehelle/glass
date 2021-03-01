@@ -15,9 +15,9 @@
           <%= if @user.basic.image != "" do%>
             <img style= width="168" height="168" src= <%= @user.basic.image %> class="rounded mx-auto d-block" alt="Profile">
           <% end %>
-          <h3 class="text-center mt-4"><%= @user.basic.encrypt_name %></h3>
-          <h6 class="text-center mt-2" style="color: #65686C"><%= @user.basic.encrypt_label %></h6>
-          <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.encrypt_loc_region %>, <%= country_name(@user.basic.encrypt_loc_country_code) %></h6>
+          <h3 class="text-center mt-4"><%= @user.basic.name %></h3>
+          <h6 class="text-center mt-2" style="color: #65686C"><%= @user.basic.label %></h6>
+          <h6  class=" text-center" style="color: #65686C"> <%= @user.basic.loc_region %>, <%= country_name(@user.basic.loc_country_code) %></h6>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
       <div class="col-md-7 mx-auto">
         <div class="mx-auto mt-5" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
           <h4 >About</h4>
-          <h6 class="mt-4"><%= @user.basic.encrypt_summary %></h6>
+          <h6 class="mt-4"><%= @user.basic.summary %></h6>
         </div>
       </div>
 
