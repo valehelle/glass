@@ -148,25 +148,6 @@
 
         </div>
 
-        <div id="education" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
-            <h4>Education</h4>
-            <div class="container">
-                <%= for education  <- @user.educations do %>
-                    <div class="row">
-                        <div class="col-4" style="padding-left: 0">
-                            <%= education.institution %>
-                        </div>
-                        <div class="col-8">
-                            <%= link "Edit", to: Routes.education_path(@conn, :edit, education.id), style: "float:right" %>
-                        </div>
-                    </div>
-                <% end %>
-                
-            </div>
-            <%= link "Add", to: Routes.education_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
-
-        </div>
-
         <div id="skill" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Programing languages and frameworks</h4>
             <div class="container">
@@ -207,26 +188,28 @@
 
 
 
-        <div id="language" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
-            <h4>Language</h4>
+        <div id="education" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Education</h4>
             <div class="container">
-                <%= for language  <- @user.languages do %>
+                <%= for education  <- @user.educations do %>
                     <div class="row">
                         <div class="col-4" style="padding-left: 0">
-                            <%= language.name %> -  <%= get_language(language.fluency) %>
+                            <%= education.institution %>
                         </div>
                         <div class="col-8">
-                            <%= link "Edit", to: Routes.language_path(@conn, :edit, language.id), style: "float:right" %>
+                            <%= link "Edit", to: Routes.education_path(@conn, :edit, education.id), style: "float:right" %>
                         </div>
                     </div>
                 <% end %>
                 
             </div>
-            <%= link "Add", to: Routes.language_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
+            <%= link "Add", to: Routes.education_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
 
         </div>
 
-        <div id="token" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+
+
+  <div id="token" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
             <h4>Token</h4>
             <div class="container">
                 <div class="row">
@@ -331,6 +314,27 @@
                 <% end %>
             <% end%>
             </div>
+        </div>   
+
+
+
+        <div id="language" class="mx-auto mt-3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+            <h4>Language</h4>
+            <div class="container">
+                <%= for language  <- @user.languages do %>
+                    <div class="row">
+                        <div class="col-4" style="padding-left: 0">
+                            <%= language.name %> -  <%= get_language(language.fluency) %>
+                        </div>
+                        <div class="col-8">
+                            <%= link "Edit", to: Routes.language_path(@conn, :edit, language.id), style: "float:right" %>
+                        </div>
+                    </div>
+                <% end %>
+                
+            </div>
+            <%= link "Add", to: Routes.language_path(@conn, :new),  class: "btn btn-primary mt-3 btn-sm" %>
+
         </div>
 
 
