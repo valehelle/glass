@@ -76,6 +76,7 @@ defmodule GlassWeb.Router do
      get "/admin/migrate", AdminController, :migrate 
 
      get "/resume/json", ResumeController, :json_resp 
+     get "/resume/:resume_id", ResumeController, :show 
      get "/resume", ResumeController, :index 
 
      get "/education/new", EducationController, :new

@@ -63,8 +63,12 @@ defmodule GlassWeb.ResumeController do
   end
 
   def index(conn, _) do
+    render(conn, "index.html")
+  end
+
+  def show(conn, %{"resume_id" => resume_id}) do
     user = conn.assigns.current_user
-    render(conn, "index.html", user: user)
+    render(conn, "show_#{resume_id}.html", user: user)
   end
 
 
