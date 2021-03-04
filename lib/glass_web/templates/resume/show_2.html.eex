@@ -2,9 +2,7 @@
     #footer{
       display: none;  
     }
-    #header{
-        display: none;
-    }
+
     body{
         background-color: white!important;
     }
@@ -32,6 +30,10 @@
         .noprint {
             display: none;
         }
+        #header{
+        display: none;
+        }
+
         .noprint-color {
             background-color: white!important;
         }
@@ -45,16 +47,19 @@
 
 
 <div style="background-color: whitesmoke;" class="noprint-color" >
+
+    <div class="container">
+        <div class="row py-3 noprint">
+            <div class="col" > 
+                <button class = "btn btn-primary mt-3" style="float:right;" onclick="window.print()">Download</button>
+            </div>
+        </div>
+    </div>
     <div class="container" style="background-color: white;">
         <div class="row py-3">
             <div class="mx-auto col-12">
                 <div >
                     <div class="container" >
-                        <div class="row py-3 noprint">
-                            <div class="col" > 
-                            <button class = "btn btn-primary mt-3" style="float:right;" onclick="window.print()">Download</button>
-                            </div>
-                        </div>
 
                         <div class="row " >
                             <div class="col-8 pl-5"  >  
@@ -99,7 +104,7 @@
                    <div class="container mt-5">
                         <div class="row pt-3 pl-3">
                             <div class="col-1" style=" padding-right:0px;">  
-                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                                <img src="/images/person.png" height="40px" style="float: right;">
                             </div>
                             <div class="col-11" >  
                                 <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Profile</span>
@@ -114,9 +119,9 @@
                         </div>
                     </div>
                    <div class="container mt-5">
-                        <div class="row pt-3 pl-3 mb-3">
+                        <div class="row mb-3 pl-3">
                             <div class="col-1" style=" padding-right:0px;">  
-                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                                <img src="/images/code.png" height="40px" style="float: right;">
                             </div>
                             <div class="col-11" >  
                                 <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Programming Experience</span>
@@ -218,7 +223,7 @@
                    <div class="container mt-5">
                         <div class="row mb-3 pl-3">
                             <div class="col-1" style=" padding-right:0px;">  
-                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                                <img src="/images/work.png" height="40px" style="float: right;">
                             </div>
                             <div class="col-8" >  
                                 <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Work Experience</span>
@@ -252,7 +257,7 @@
                   <div class="container mt-5">
                         <div class="row mb-3 pl-3">
                             <div class="col-1" style=" padding-right:0px;">  
-                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                                <img src="/images/project.png" height="40px" style="float: right;">
                             </div>
                             <div class="col-8" >  
                                 <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Projects</span>
@@ -286,7 +291,7 @@
                     <div class="container mt-5">
                         <div class="row mb-3 pl-3">
                             <div class="col-1" style=" padding-right:0px;">  
-                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                                <img src="/images/education.png" height="40px" style="float: right;">
                             </div>
                             <div class="col-8" >  
                                 <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Education</span>
@@ -321,10 +326,10 @@
                    <div class="container mt-5">
                         <div class="row mb-3 pl-3">
                             <div class="col-1" style=" padding-right:0px;">  
-                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                                <img src="/images/language.png" height="40px" style="float: right;">
                             </div>
                             <div class="col-8" >  
-                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Languages</span>
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Language</span>
                             </div>
                         </div>
                         <%= for language  <- @user.languages do %>

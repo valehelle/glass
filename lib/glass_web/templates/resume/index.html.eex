@@ -1,11 +1,21 @@
 <div>
     <div class="container">
-        <div class="row py-3">
-            <div class="mx-auto col-6">
-                <%= link "Template 1", to: Routes.resume_path(@conn, :show, 1),  class: "btn btn-primary mt-3" %>
+        <div class="mx-auto row py-3">
+            <div class="mx-auto col-md-7 py-2">
+                <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+                <h4>Template 1</h4>
+                    <img src="/images/resume_1.png" class="img-fluid" style="border: solid lightgrey 1px;" >
+                    <%= link "View", to: Routes.resume_path(@conn, :show, 1), class: "btn btn-primary mt-3" %>
+
+                </div>
             </div>
-            <div class="mx-auto col-6">
-                <%= link "Template 2", to: Routes.resume_path(@conn, :show, 2),  class: "btn btn-primary mt-3" %>
+            <div class="mx-auto col-md-7 py-2">
+                <div class="mx-auto " style="box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: white; padding: 16px; border-radius: 10px;">
+                <h4>Template 2</h4>
+                    <img src="/images/resume_2.png" class="img-fluid" style="border: solid lightgrey 1px;" >
+                    <%= link "View", to: Routes.resume_path(@conn, :show, 2), class: "btn btn-primary mt-3" %>
+
+                </div>
             </div>
         </div>
     </div>
