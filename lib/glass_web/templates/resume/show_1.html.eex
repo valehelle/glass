@@ -26,6 +26,10 @@
         font-size: 14pt;
         padding-right: 200px;
     }
+
+    .skill {
+        font-size: 14pt;
+    }
     .list{
         margin-bottom: 40px;
     }
@@ -118,8 +122,89 @@
                             </div>
                          </div>
 
+
+                         <div class="row">
+                            <div class="mx-auto col-4" >  
+                                <span class="title" style="float: right; margin:0; margin-top: 2pt;">Summary</span>
+                            </div>
+                            <div class="mx-auto col-8" >  
+                                <span class="value"  >
+                                    <%= @user.basic.summary %>
+                                </span>
+                            </div>
+                         </div>
+
                     </div>
 
+                    <div class="container mt-5">
+                        <div class="row py-3">
+                            <div class="mx-auto col-4" >  
+                                <span class="title" style="float: right; margin:0; margin-top: 2pt;">PROGRAMMING EXPERIENCE</span>
+                            </div>
+                            <div class="mx-auto col-8" >  
+                            </div>
+                        </div>
+                            <div class="row list do-not-break">
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
+                                    <div class="mx-auto col-4" >  
+                                        <span class="title" style="float: right; margin:0; margin-top: 2pt;">Daily experience</span>
+                                    </div>
+                                    <div class="mx-auto col-8" >  
+                                        <%= for skill  <- @user.skills do %>
+                                            <%= if skill.level == 1 do %>
+                                            <span class="skill"><%= skill.name %></span>
+                                            </br>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 2 end) != nil do %>
+                                    <div class="mx-auto col-4" >  
+                                        <span class="title" style="float: right; margin:0; margin-top: 2pt;">Experience</span>
+                                    </div>
+                                    <div class="mx-auto col-8" >  
+                                        <%= for skill  <- @user.skills do %>
+                                             <%= if skill.level == 2 do %>
+                                            <span class="skill"><%= skill.name %></span>
+                                            </br>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 3 end) != nil do %>
+                                    <div class="mx-auto col-4" >  
+                                        <span class="title" style="float: right; margin:0; margin-top: 2pt;">Used in the past</span>
+                                    </div>
+                                    <div class="mx-auto col-8" >  
+                                        <%= for skill  <- @user.skills do %>
+                                            <%= if skill.level == 3 do %>
+                                            <span class="skill"><%= skill.name %></span>
+                                            </br>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 4 end) != nil do %>
+                                    <div class="mx-auto col-4" >  
+                                        <span class="title" style="float: right; margin:0; margin-top: 2pt;">Interests and Curiosity</span>
+                                    </div>
+                                    <div class="mx-auto col-8" >  
+                                        <%= for skill  <- @user.skills do %>
+                                            <%= if skill.level == 4 do %>
+                                            <span class="skill"><%= skill.name %></span>
+                                            </br>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+
+                                
+                            </div>
+                  </div>
 
                    <div class="container mt-5">
                         <div class="row py-3">
@@ -249,7 +334,7 @@
                         <%= for language  <- @user.languages do %>
                             <div class="row list do-not-break">
                                 <div class="mx-auto col-4" >  
-                                    <span class="title" style="float: right; margin:0; margin-top: 2pt;">TITLE</span>
+                                    <span class="title" style="float: right; margin:0; margin-top: 2pt;">NAME</span>
                                 </div>
                                 <div class="mx-auto col-8" >  
                                     <span class="value"><%= language.name %></span>

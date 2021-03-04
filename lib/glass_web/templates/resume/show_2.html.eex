@@ -1,0 +1,353 @@
+<style>
+    #footer{
+      display: none;  
+    }
+    #header{
+        display: none;
+    }
+    body{
+        background-color: white!important;
+    }
+    .do-not-break {
+        page-break-inside: avoid
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 12pt;
+    }
+    .main-title {
+        color: grey;
+        font-size: 14pt;
+    }
+
+    .value {
+        font-size: 14pt;
+        padding-right: 200px;
+    }
+    .list{
+        margin-bottom: 10px;
+    }
+    @media print {
+        .noprint {
+            display: none;
+        }
+        .noprint-color {
+            background-color: white!important;
+        }
+
+
+    }
+    
+
+</style>
+
+
+
+<div style="background-color: whitesmoke;" class="noprint-color" >
+    <div class="container" style="background-color: white;">
+        <div class="row py-3">
+            <div class="mx-auto col-12">
+                <div >
+                    <div class="container" >
+                        <div class="row py-3 noprint">
+                            <div class="col" > 
+                            <button class = "btn btn-primary mt-3" style="float:right;" onclick="window.print()">Download</button>
+                            </div>
+                        </div>
+
+                        <div class="row " >
+                            <div class="col-8 pl-5"  >  
+                                <span class="value" style="font-size: 25pt; font-weight: bold;" ><%= @user.basic.name %></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-8 pl-5">  
+                                <span class="value"  >
+                                    <%= @user.basic.loc_address %>, <%= @user.basic.loc_postal_code %>, <%= @user.basic.loc_city %>, <%= country_name(@user.basic.loc_country_code) %>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div  class="col-8 pl-5" >  
+                                <span class="value"  >
+                                    <%= @user.basic.phone %>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-8 pl-5" >  
+                                <span class="value"  >
+                                    <%= @user.email %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 pl-5" >  
+                                <span class="value"  >
+                                    https://www.logname.dev/lg/<%= @user.username %>
+                                </span>
+                            </div>
+                         </div>
+
+                    </div>
+
+                   <div class="container mt-5">
+                        <div class="row pt-3 pl-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                            </div>
+                            <div class="col-11" >  
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Profile</span>
+                            </div>
+                        </div>
+                        <div class="row pl-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                            </div>
+                            <div class="col-8" >  
+                                <span class="value" style="margin:0; margin-top: 2pt; "><%= @user.basic.summary %></span>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="container mt-5">
+                        <div class="row pt-3 pl-3 mb-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                            </div>
+                            <div class="col-11" >  
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Programming Experience</span>
+                            </div>
+                        </div>
+                            <div class="row list do-not-break pl-3">
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 1 end) != nil do %>
+                                    <div class="col-1" style=" padding-right:0px;">  
+                                    </div>
+                                    <div class="mx-auto col-11" >  
+                                        <span class="value" style="font-weight: bold;">Daily Experience</span>
+                                    </div>
+
+                                    <%= for skill  <- @user.skills do %>
+                                        <%= if skill.level == 1 do %>
+                                                    <div class="col-1" style=" padding-right:0px;">  
+                                                    </div>
+                                                    <div class="col-11" >  
+                                                            <span class="value"><%= skill.name %></span>
+                                                    </div>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                                
+                            </div>
+
+
+                            <div class="row list do-not-break pl-3">
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 2 end) != nil do %>
+                                    <div class="col-1" style=" padding-right:0px;">  
+                                    </div>
+                                    <div class="mx-auto col-11" >  
+                                        <span class="value" style="font-weight: bold;">Experience</span>
+                                    </div>
+
+                                    <%= for skill  <- @user.skills do %>
+                                        <%= if skill.level == 2 do %>
+                                                    <div class="col-1" style=" padding-right:0px;">  
+                                                    </div>
+                                                    <div class="col-11" >  
+                                                            <span class="value"><%= skill.name %></span>
+                                                    </div>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                                
+                            </div>
+
+                            <div class="row list do-not-break pl-3">
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 3 end) != nil do %>
+                                    <div class="col-1" style=" padding-right:0px;">  
+                                    </div>
+                                    <div class="mx-auto col-11" >  
+                                        <span class="value" style="font-weight: bold;">Used in the past</span>
+                                    </div>
+
+                                    <%= for skill  <- @user.skills do %>
+                                        <%= if skill.level == 3 do %>
+                                                    <div class="col-1" style=" padding-right:0px;">  
+                                                    </div>
+                                                    <div class="col-11" >  
+                                                            <span class="value"><%= skill.name %></span>
+                                                    </div>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                                
+                            </div>
+
+
+                            <div class="row list do-not-break pl-3">
+
+                                <%= if Enum.find(@user.skills, fn skill -> skill.level == 4 end) != nil do %>
+                                    <div class="col-1" style=" padding-right:0px;">  
+                                    </div>
+                                    <div class="mx-auto col-11" >  
+                                        <span class="value" style="font-weight: bold;">Interests and Curiosity</span>
+                                    </div>
+
+                                    <%= for skill  <- @user.skills do %>
+                                        <%= if skill.level == 4 do %>
+                                                    <div class="col-1" style=" padding-right:0px;">  
+                                                    </div>
+                                                    <div class="col-11" >  
+                                                            <span class="value"><%= skill.name %></span>
+                                                    </div>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                                
+                            </div>
+
+
+
+                    </div>
+                   <div class="container mt-5">
+                        <div class="row mb-3 pl-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                            </div>
+                            <div class="col-8" >  
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Work Experience</span>
+                            </div>
+                        </div>
+                        <%= for work  <- @user.works do %>
+                            <div class="row list do-not-break pl-3">
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="font-weight: bold;"><%= work.position %> at <%= work.name %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="color:grey"><%= get_date(work.start_date) %> - <%= if work.is_current do "Present" else get_date(work.end_date)  end %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value"><%= work.description %></span>
+                                </div>
+
+                                
+                            </div>
+
+                        <% end %>
+                  </div>
+                  <div class="container mt-5">
+                        <div class="row mb-3 pl-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                            </div>
+                            <div class="col-8" >  
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Projects</span>
+                            </div>
+                        </div>
+                        <%= for project  <- @user.projects do %>
+                            <div class="row list do-not-break pl-3">
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="font-weight: bold;"><%= project.name %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="color:grey"><%= project.url %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value"><%= project.description %></span>
+                                </div>
+                                
+                            </div>
+
+                        <% end %>
+                    </div>
+                  
+                    <div class="container mt-5">
+                        <div class="row mb-3 pl-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                            </div>
+                            <div class="col-8" >  
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Education</span>
+                            </div>
+                        </div>
+                        <%= for education  <- @user.educations do %>
+                            <div class="row list do-not-break pl-3">
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="font-weight: bold;"><%= education.institution %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="color:grey"><%= get_date(education.start_date) %> - <%= get_date(education.end_date) %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value"><%= education.area %></span>
+                                </div>
+                                
+                            </div>
+
+                        <% end %>
+                  </div>
+
+
+                   <div class="container mt-5">
+                        <div class="row mb-3 pl-3">
+                            <div class="col-1" style=" padding-right:0px;">  
+                                <img src="/images/profile_outline.png" height="40px" style="float: right;">
+                            </div>
+                            <div class="col-8" >  
+                                <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Languages</span>
+                            </div>
+                        </div>
+                        <%= for language  <- @user.languages do %>
+                            <div class="row list do-not-break pl-3">
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="font-weight: bold;"><%= language.name %></span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">  
+                                </div>
+                                <div class="mx-auto col-11" >  
+                                    <span class="value" style="color:grey"><%= get_language(language.fluency) %></span>
+                                </div>
+
+                                
+                            </div>
+
+                        <% end %>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
