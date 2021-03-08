@@ -15,7 +15,8 @@
         <tr>
         <th scope="row"><%= user.id %></th>
         <td><%=  user.email %></td>
-        <td><%=  user.username %></td>
+        <td><div style="width:100px; overflow: hidden;"><%=  user.username %></div></td>
+
         <td><%=  user.inserted_at %></td>
         <td><%=  user.updated_at %></td>
         <td>
