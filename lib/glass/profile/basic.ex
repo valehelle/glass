@@ -7,15 +7,15 @@ defmodule Glass.Profile.Basic do
     field :email, :string, default: ""
     field :github_usename, :string, default: ""
     field :image, :string, default: ""
-    field :label, Glass.Encrypted.Binary, default: ""
-    field :loc_address, Glass.Encrypted.Binary, default: ""
-    field :loc_city, Glass.Encrypted.Binary, default: ""
-    field :loc_country_code, Glass.Encrypted.Binary, default: ""
-    field :loc_postal_code, Glass.Encrypted.Binary, default: ""
-    field :loc_region, Glass.Encrypted.Binary, default: ""
-    field :name, Glass.Encrypted.Binary, default: ""
-    field :phone, Glass.Encrypted.Binary, default: ""
-    field :summary, Glass.Encrypted.Binary, default: ""
+    field :label, Glass.Encrypted.Binary
+    field :loc_address, Glass.Encrypted.Binary
+    field :loc_city, Glass.Encrypted.Binary
+    field :loc_country_code, Glass.Encrypted.Binary
+    field :loc_postal_code, Glass.Encrypted.Binary
+    field :loc_region, Glass.Encrypted.Binary
+    field :name, Glass.Encrypted.Binary
+    field :phone, Glass.Encrypted.Binary
+    field :summary, Glass.Encrypted.Binary
     field :twitter_username, :string, default: ""
     field :url, :string, default: ""
     

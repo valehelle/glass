@@ -111,6 +111,7 @@ defmodule GlassWeb.UserAuth do
     conn
     |> renew_session()
     |> put_resp_cookie(@uuid_cookie, uuid, @remember_me_options)
+    |> put_flash(:magic_link_url, url)
     |> redirect(to: "/check_email")
    
   end

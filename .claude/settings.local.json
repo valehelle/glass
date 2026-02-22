@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mix deps.get:*)",
+      "Bash(mix deps.unlock:*)",
+      "Bash(mix deps.compile:*)",
+      "Bash(mix compile:*)"
+    ]
+  }
+}

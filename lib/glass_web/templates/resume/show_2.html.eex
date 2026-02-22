@@ -263,6 +263,27 @@
                                 <span class="title" style="margin:0; margin-top: 2pt; font-size: 20pt;">Projects</span>
                             </div>
                         </div>
+                        <div class="row list do-not-break pl-3">
+                                <div class="col-1" style=" padding-right:0px;">
+                                </div>
+                                <div class="mx-auto col-11" >
+                                    <span class="value" style="font-weight: bold;">Tied</span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">
+                                </div>
+                                <div class="mx-auto col-11" >
+                                    <span class="value" style="color:grey">https://tied.fit/app</span>
+                                </div>
+
+                                <div class="col-1" style=" padding-right:0px;">
+                                </div>
+                                <div class="mx-auto col-11" >
+                                    <span class="value">Tied is an AI powered calorie tracking app that has been used by more than 30k users.</span>
+                                </div>
+
+                            </div>
+
                         <%= for project  <- @user.projects do %>
                             <div class="row list do-not-break pl-3">
                                 <div class="col-1" style=" padding-right:0px;">  
